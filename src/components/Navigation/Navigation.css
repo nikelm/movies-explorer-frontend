@@ -1,0 +1,42 @@
+.header__nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.header__nav-list {
+  display: flex;
+  align-items: center;
+  margin-right: 70px;
+}
+
+.header__nav-item {
+  min-width: 76px;
+  height: 32px;
+  margin-left: 30px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  border: none;
+  padding: 0;
+}
+
+.header__nav-item_registration {
+  color: #FFFFFF;
+  background: transparent;
+}
+
+.header__nav-item_registration:hover {
+  cursor: pointer;
+}
+
+.header__nav-item_login {
+  background: #2BE080;
+  border-radius: 3px;
+}
+
+.header__nav-item_login:hover {
+  cursor: pointer;
+}

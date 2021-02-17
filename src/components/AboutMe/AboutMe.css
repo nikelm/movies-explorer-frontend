@@ -1,0 +1,142 @@
+.aboutme {
+  margin: 0 auto;
+  width: 1280px;
+  height: 1079px;
+}
+
+.aboutme__profile {
+  margin-right: 270px;
+  width: 673px;
+}
+
+.aboutme__title {
+  margin: 0;
+  padding-top: 110px;
+  margin-left: 70px;
+  padding-bottom: 23px;
+  height: 27px;
+  width: 1140px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 27px;
+  border-bottom: 1px solid #000000;
+}
+
+.aboutme__name {
+  margin: 0;
+  margin-left: 70px;
+  height: 58px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 50px;
+  line-height: 58px;
+}
+
+.aboutme__profession {
+  margin: 0;
+  margin-left: 70px;
+  padding-top: 18px;
+}
+
+.aboutme__myself {
+  margin: 0;
+  margin-left: 70px;
+  padding-top: 26px;
+  width: 600px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.aboutme__social-list {
+  margin-left: 70px;
+  padding-top: 99px;
+}
+
+.aboutme__social-item {
+  margin-right: 20px;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+}
+
+.aboutme__social-item:visited:active:hover {
+  color: #000000;
+}
+
+.aboutme__photo {
+  width: 270px;
+  height: 327px;
+  border-radius: 10px;
+}
+
+.aboutme__photo-container {
+  width: 270px;
+  height: 327px;
+  border-radius: 10px;
+}
+
+.aboutme__container {
+  margin: 0 auto;
+  padding-top: 66px;
+  display: flex;
+}
+
+.aboutme__subtitle {
+  margin: 0;
+  padding-top: 100px;
+  padding-bottom: 50px;
+  margin-left: 70px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 20px;
+  color: #A0A0A0;
+}
+
+.aboutme__container-portfolio {
+  margin-left: 70px;
+  display: flex;
+  align-items: center;
+  /*justify-content: space-between;*/
+}
+
+.aboutme__container-text {
+  margin: 0;
+  padding-top: 20px;
+  padding-bottom: 19px;
+  width: 1111px;
+  height: 50px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 50px;
+  border-bottom: 1px solid #E8E8E8;
+}
+
+.aboutme__container-link {
+  padding-top: 20px;
+  padding-bottom: 19px;
+  width: 29px;
+  height: 50px;
+  background-image: url('../../images/strelka.svg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-bottom: 1px solid #E8E8E8;
+}
+
+.aboutme_border-disable {
+  border-bottom: none;
+}
