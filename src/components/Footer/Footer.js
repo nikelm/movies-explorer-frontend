@@ -11,13 +11,13 @@ function Footer(props) {
           <p className="footer__author">&copy; 2021.</p>
           <ul className="footer__links">
             <li className="footer__link-item">
-              <a href="https://praktikum.yandex.ru/" lang="ru" className="footer__link">Яндекс.Практикум</a>
+              <a href="https://praktikum.yandex.ru/" lang="ru" className="footer__link" target="_blank" rel="noreferrer">Яндекс.Практикум</a>
             </li>
             <li className="footer__link-item">
-              <a href="https://github.com/" lang="ru" className="footer__link">Github</a>
+              <a href="https://github.com/" lang="ru" className="footer__link" target="_blank" rel="noreferrer">Github</a>
             </li>
             <li className="footer__link-item">
-              <a href="https://ru-ru.facebook.com/" lang="ru" className="footer__link">Facebook</a>
+              <a href="https://ru-ru.facebook.com/" lang="ru" className="footer__link" target="_blank" rel="noreferrer">Facebook</a>
             </li>
           </ul>
         </div>

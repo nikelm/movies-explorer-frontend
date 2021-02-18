@@ -1,21 +1,21 @@
 .aboutme {
   margin: 0 auto;
-  width: 1280px;
+  max-width: 1280px;
   height: 554px;
 }
 
 .aboutme__profile {
   margin-right: 270px;
-  width: 673px;
+  max-width: 673px;
 }
 
 .aboutme__title {
-  margin: 0;
+  margin: 0 70px;
   padding-top: 110px;
   margin-left: 70px;
   padding-bottom: 23px;
   height: 27px;
-  width: 1140px;
+  max-width: 1140px;
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -26,7 +26,6 @@
 
 .aboutme__name {
   margin: 0;
-  margin-left: 70px;
   height: 58px;
   font-family: 'Inter', sans-serif;
   font-style: normal;
@@ -38,13 +37,11 @@
 .aboutme__profession {
   margin: 0;
   height: 20px;
-  margin-left: 70px;
   padding-top: 18px;
 }
 
 .aboutme__myself {
   margin: 0;
-  margin-left: 70px;
   padding-top: 26px;
   width: 600px;
   font-family: 'Inter', sans-serif;
@@ -55,7 +52,6 @@
 }
 
 .aboutme__social-list {
-  margin-left: 70px;
   padding-top: 99px;
 }
 
@@ -84,12 +80,16 @@
   width: 270px;
   height: 327px;
   border-radius: 10px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 
 .aboutme__container {
-  margin: 0 auto;
+  margin: 0 70px;
   padding-top: 66px;
   display: flex;
+  position: relative;
 }
 
 @media screen and (max-width: 1480px) {

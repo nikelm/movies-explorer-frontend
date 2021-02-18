@@ -1,17 +1,17 @@
 .techs {
   margin: 0 auto;
-  width: 1280px;
+  max-width: 1280px;
   height: 625px;
   background-color: #F5F5F5;
   ;
 }
 
 .techs__title {
-  margin: 0;
+  margin: 0 70px;
   padding-top: 100px;
   margin-left: 70px;
   padding-bottom: 23px;
-  width: 1140px;
+  max-width: 1140px;
   height: 27px;
   font-family: 'Inter', sans-serif;
   font-style: normal;
@@ -72,23 +72,10 @@
   border-radius: 10px;
 }
 
-@media screen and (max-width: 1480px) {
-  .techs {
-      max-width: 1480px;
-  }
-}
-
-@media screen and (max-width: 1280px) {
-  .techs {
-      max-width: 1280px;
-  }
-
-}
-
 @media screen and (max-width: 1024px) {
   .techs {
-      max-width: 768px;
-      max-height: 567px;
+    max-width: 768px;
+    max-height: 567px;
   }
   .techs__title {
     max-width: 668px;
@@ -115,8 +102,3 @@
   }
 }
 
-@media screen and (max-width: 768px) {
-  .techs {
-      max-width: 768px;
-  }
-}

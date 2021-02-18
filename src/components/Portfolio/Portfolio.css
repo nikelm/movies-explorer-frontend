@@ -1,11 +1,11 @@
 .portfolio {
   margin: 0 auto;
-  width: 1280px;
+  max-width: 1280px;
   height: 525px;
 }
 
 .portfolio__title {
-  margin: 0;
+  margin: 0 70px;
   padding-top: 100px;
   padding-bottom: 30px;
   margin-left: 70px;
@@ -18,10 +18,11 @@
 }
 
 .portfolio__container-portfolio {
-  margin-left: 70px;
+  margin: 0 70px;
+  width: calc(100% - 70px - 70px);
   display: flex;
   align-items: center;
-  /*justify-content: space-between;*/
+  justify-content: space-between;
 }
 
 .portfolio__container-text {
@@ -29,7 +30,7 @@
   padding: 0;
   padding-bottom: 19px;
   padding-top: 20px;
-  width: 1111px;
+  width: calc(100vw - 70px - 70px);
   height: 50px;
   font-family: 'Inter', sans-serif;
   font-style: normal;

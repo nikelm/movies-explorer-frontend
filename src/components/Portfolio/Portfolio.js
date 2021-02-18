@@ -14,13 +14,13 @@ function Portfolio(props) {
         </div>
         <div className="portfolio__container-portfolio">
           <p className="portfolio__container-text">Адаптивный сайт</p>
-          <a href="http://localhost:3000" target="_blank" rel="noreferrer">
+          <a href="https://nikelm.github.io/russian-travel/" target="_blank" rel="noreferrer">
             <div className="portfolio__container-link"></div>
           </a>
         </div>
         <div className="portfolio__container-portfolio">
           <p className="portfolio__container-text portfolio_border-disable">Одностраничное приложение</p>
-          <a href="http://localhost:3000" target="_blank" rel="noreferrer">
+          <a href="https://nikelm.github.io/mesto/" target="_blank" rel="noreferrer">
             <div className="portfolio__container-link portfolio_border-disable"></div>
           </a>
         </div>

@@ -5,10 +5,9 @@
 }
 
 .about-project__title {
-  margin: 0;
+  margin: 0 70px;
   height: 27px;
   padding-top: 110px;
-  margin-left: 70px;
   padding-bottom: 23px;
   max-width: 1140px;
   font-family: 'Inter', sans-serif;
@@ -20,13 +19,14 @@
 }
 
 .about-project__table {
+  margin: 0 70px;
   padding-top: 70px;
   display: flex;
 }
 
 .about-project__column {
-  margin-left: 70px;
-  width: 550px;
+
+  max-width: 550px;
 }
 
 .about-project__subtitle {
@@ -55,7 +55,7 @@
 .about-project__column-backend {
   margin-top: 40px;
   height: 53px;
-  margin-left: 70px;
+
 }
 
 .about-project__backend-progress {
@@ -97,7 +97,7 @@
 
 .about-frontend-progress {
   margin: 0;
-  width: 912px;
+  max-width: 912px;
   height: 36px;
   display: flex;
   align-items: center;
@@ -108,19 +108,6 @@
   font-size: 14px;
   line-height: 17px;
   background: #F2F2F2;
-}
-
-@media screen and (max-width: 1480px) {
-  .about-project {
-    max-width: 1280px;
-  }
-}
-
-@media screen and (max-width: 1280px) {
-  .about-project {
-    max-width: 1280px;
-  }
-
 }
 
 @media screen and (max-width: 1024px) {
@@ -174,8 +161,3 @@
   }
 }
 
-@media screen and (max-width: 768px) {
-  .about-project {
-    max-width: 768px;
-  }
-}
