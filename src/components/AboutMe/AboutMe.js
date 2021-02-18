@@ -22,25 +22,6 @@ function AboutMe(props) {
             <img className="aboutme__photo" alt="Мой профиль" src={profile} />
           </div>
         </div>
-        <p className="aboutme__subtitle">Портфолио</p>
-        <div className="aboutme__container-portfolio">
-          <p className="aboutme__container-text">Статичный сайт</p>
-          <a href="http://localhost:3000" target="_blank" rel="noreferrer">
-            <div className="aboutme__container-link"></div>
-          </a>
-        </div>
-        <div className="aboutme__container-portfolio">
-          <p className="aboutme__container-text">Адаптивный сайт</p>
-          <a href="http://localhost:3000" target="_blank" rel="noreferrer">
-            <div className="aboutme__container-link"></div>
-          </a>
-        </div>
-        <div className="aboutme__container-portfolio">
-          <p className="aboutme__container-text aboutme_border-disable">Одностраничное приложение</p>
-          <a href="http://localhost:3000" target="_blank" rel="noreferrer">
-            <div className="aboutme__container-link aboutme_border-disable"></div>
-          </a>
-        </div>
       </section>
     </>
   );

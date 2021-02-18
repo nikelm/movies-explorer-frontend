@@ -1,7 +1,7 @@
 .aboutme {
   margin: 0 auto;
   width: 1280px;
-  height: 1079px;
+  height: 554px;
 }
 
 .aboutme__profile {
@@ -37,6 +37,7 @@
 
 .aboutme__profession {
   margin: 0;
+  height: 20px;
   margin-left: 70px;
   padding-top: 18px;
 }
@@ -91,52 +92,70 @@
   display: flex;
 }
 
-.aboutme__subtitle {
-  margin: 0;
-  padding-top: 100px;
-  padding-bottom: 50px;
-  margin-left: 70px;
-  font-family: 'Inter', sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 20px;
-  color: #A0A0A0;
+@media screen and (max-width: 1480px) {
+  .aboutme {
+      max-width: 1480px;
+  }
 }
 
-.aboutme__container-portfolio {
-  margin-left: 70px;
-  display: flex;
-  align-items: center;
-  /*justify-content: space-between;*/
+@media screen and (max-width: 1280px) {
+  .aboutme {
+      max-width: 1280px;
+  }
+
 }
 
-.aboutme__container-text {
-  margin: 0;
-  padding-top: 20px;
-  padding-bottom: 19px;
-  width: 1111px;
-  height: 50px;
-  font-family: 'Inter', sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 30px;
-  line-height: 50px;
-  border-bottom: 1px solid #E8E8E8;
+@media screen and (max-width: 1024px) {
+  .aboutme {
+    max-width: 768px;
+    max-height: 530px;
+  }
+  .aboutme__title {
+    max-width: 668px;
+    margin-left: 50px;
+    padding-top: 90px;
+  }
+  .aboutme__name {
+    height: 40px;
+    font-size: 40px;
+    line-height: 40px;
+    margin-left: 50px;
+  }
+  .aboutme__profession {
+    margin-left: 50px;
+    padding-top: 16px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+  .aboutme__myself {
+    width: 364px;
+    height: 108px;
+    margin-left: 50px;
+    padding-top: 20px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+  .aboutme__profile {
+    max-width: 414px;
+    padding-right: 49px;
+    margin-right: 0;
+  }
+  .aboutme__photo-container {
+    width: 255px;
+    height: 307px;
+  }
+  .aboutme__photo {
+    width: 255px;
+    height: 307px;
+  }
+  .aboutme__social-list {
+    margin-left: 50px;
+    padding-top: 87px;
+  }
 }
 
-.aboutme__container-link {
-  padding-top: 20px;
-  padding-bottom: 19px;
-  width: 29px;
-  height: 50px;
-  background-image: url('../../images/strelka.svg');
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  border-bottom: 1px solid #E8E8E8;
-}
-
-.aboutme_border-disable {
-  border-bottom: none;
+@media screen and (max-width: 768px) {
+  .aboutme {
+      max-width: 768px;
+  }
 }

@@ -1,6 +1,6 @@
 .header {
   margin: 0 auto;
-  width: 1280px;
+  max-width: 1280px;
   height: 74px;
   display: flex;
   justify-content: space-between;
@@ -41,4 +41,28 @@
   font-weight: normal;
   font-size: 13px;
   line-height: 18px;
+}
+
+@media screen and (max-width: 1480px) {
+  .header {
+      max-width: 1480px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .header {
+      max-width: 1280px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .header {
+      max-width: 1024px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+      max-width: 768px;
+  }
 }

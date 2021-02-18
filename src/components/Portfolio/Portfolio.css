@@ -1,0 +1,101 @@
+.portfolio {
+  margin: 0 auto;
+  width: 1280px;
+  height: 525px;
+}
+
+.portfolio__title {
+  margin: 0;
+  padding-top: 100px;
+  padding-bottom: 30px;
+  margin-left: 70px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 20px;
+  color: #A0A0A0;
+}
+
+.portfolio__container-portfolio {
+  margin-left: 70px;
+  display: flex;
+  align-items: center;
+  /*justify-content: space-between;*/
+}
+
+.portfolio__container-text {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 19px;
+  padding-top: 20px;
+  width: 1111px;
+  height: 50px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 50px;
+  border-bottom: 1px solid #E8E8E8;
+}
+
+.portfolio__container-link {
+  padding-bottom: 19px;
+  padding-top: 20px;
+  width: 29px;
+  height: 50px;
+  background-image: url('../../images/strelka.svg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-bottom: 1px solid #E8E8E8;
+}
+
+.portfolio_border-disable {
+  border-bottom: none;
+}
+
+@media screen and (max-width: 1480px) {
+  .portfolio {
+      max-width: 1480px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .portfolio {
+      max-width: 1280px;
+  }
+
+}
+
+@media screen and (max-width: 1024px) {
+  .portfolio {
+      max-width: 768px;
+      min-height: 464px;
+  }
+  .portfolio__title {
+    padding-top: 90px;
+    margin-left: 50px;
+    padding-bottom: 50px;
+    max-width: 668px;
+  }
+  .portfolio__container-portfolio {
+    margin-left: 50px;
+    max-width: 668px;
+
+  }
+  .portfolio__container-link {
+    width: 27px;
+    height: 50px;
+  }
+  .portfolio__container-text {
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .portfolio {
+      max-width: 768px;
+      height: 50px;
+  }
+}

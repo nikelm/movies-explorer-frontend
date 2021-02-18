@@ -11,7 +11,7 @@ function AboutProject(props) {
             <p className="about-project__subtitle">Дипломный проект включал 5 этапов</p>
             <p className="about-project__text">Составление плана, работу над бэкендом, вёрстку, добавление функциональности и финальные доработки.</p>
           </div>
-          <div className="about-project__column">
+          <div className="about-project__column about-project__column_margin-left">
             <p className="about-project__subtitle">На выполнение диплома ушло 5 недель</p>
             <p className="about-project__text">У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься.</p>
           </div>

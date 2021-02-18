@@ -71,3 +71,52 @@
   background: #E8E8E8;
   border-radius: 10px;
 }
+
+@media screen and (max-width: 1480px) {
+  .techs {
+      max-width: 1480px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .techs {
+      max-width: 1280px;
+  }
+
+}
+
+@media screen and (max-width: 1024px) {
+  .techs {
+      max-width: 768px;
+      max-height: 567px;
+  }
+  .techs__title {
+    max-width: 668px;
+    margin-left: 50px;
+    padding-top: 90px;
+  }
+  .techs__subtitle {
+    margin-top: 80px;
+  }
+  .techs__text {
+    margin-top: 22px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+  .techs__list {
+    margin-top: 83px;
+    margin-bottom: 90px;
+  }
+  .techs__item {
+    width: 84px;
+    height: 57px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .techs {
+      max-width: 768px;
+  }
+}

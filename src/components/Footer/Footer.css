@@ -2,7 +2,7 @@
   margin: 0 auto;
   width: 1280px;
   height: 172px;
-  margin-bottom: 16px;
+
 }
 
 .footer__text {
@@ -63,4 +63,38 @@
 
 .footer__link:visited:active:hover {
   color: #000000;
+}
+
+@media screen and (max-width: 1480px) {
+  .footer {
+      max-width: 1480px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .footer {
+      max-width: 1280px;
+  }
+
+}
+
+@media screen and (max-width: 1024px) {
+  .footer {
+    max-width: 768px;
+  }
+  .footer__text {
+    max-width: 708px;
+    margin-left: 0;
+  }
+  .footer__nav {
+    margin: 0;
+    max-width: 708px;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+      max-width: 768px;
+  }
 }

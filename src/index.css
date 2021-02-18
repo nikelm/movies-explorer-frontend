@@ -1,12 +1,6 @@
 @import url(./vendor/normalize.css);
 @import url(./vendor/fonts/fonts.css);
 
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
+#root {
+  margin: 0 auto;
 }
-
-code {
-  font-family: 'Inter', sans-serif;
-}
-
