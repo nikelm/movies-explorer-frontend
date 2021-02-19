@@ -56,34 +56,20 @@
   border-bottom: none;
 }
 
-@media screen and (max-width: 1480px) {
+@media screen and (min-width: 768px) and (max-width: 1024px) {
   .portfolio {
-      max-width: 1480px;
-  }
-}
-
-@media screen and (max-width: 1280px) {
-  .portfolio {
-      max-width: 1280px;
-  }
-
-}
-
-@media screen and (max-width: 1024px) {
-  .portfolio {
-      max-width: 768px;
-      min-height: 464px;
+    max-width: 768px;
+    min-height: 464px;
   }
   .portfolio__title {
     padding-top: 90px;
-    margin-left: 50px;
+    margin: 0 50px;
     padding-bottom: 50px;
     max-width: 668px;
   }
   .portfolio__container-portfolio {
-    margin-left: 50px;
-    max-width: 668px;
-
+    margin: 0 50px;
+    width: calc(100% - 50px - 50px);
   }
   .portfolio__container-link {
     width: 27px;
@@ -94,9 +80,3 @@
   }
 }
 
-@media screen and (max-width: 768px) {
-  .portfolio {
-      max-width: 768px;
-      height: 50px;
-  }
-}

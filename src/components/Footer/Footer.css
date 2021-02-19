@@ -64,16 +64,16 @@
   color: #000000;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (min-width: 768px) and (max-width: 1024px) {
   .footer {
     max-width: 768px;
   }
   .footer__text {
-    max-width: 708px;
-    margin-left: 0;
+    max-width: 768px;
+    margin: 0 30px;
   }
   .footer__nav {
-    margin: 0;
+    margin: 0 30px;
     max-width: 708px;
     margin-top: 20px;
   }

@@ -11,7 +11,7 @@
 }
 
 .header__nav-item {
-  min-width: 76px;
+  width: 76px;
   height: 32px;
   margin-left: 30px;
   font-family: 'Inter', sans-serif;
@@ -39,4 +39,25 @@
 
 .header__nav-item_login:hover {
   cursor: pointer;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+
+  .header__nav-item {
+    margin-left: 14px;
+  }
+
+  .header__nav-item_registration {
+    width: 64px;
+    height: 16px;
+    font-size: 10px;
+    margin-left: 14px;
+  }
+
+  .header__nav-item_login {
+    width: 54px;
+    height: 26px;
+    font-size: 10px;
+  }
+
 }
