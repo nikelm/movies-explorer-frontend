@@ -102,3 +102,48 @@
   }
 }
 
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .techs {
+    max-width: 767px;
+    max-height: 651px;
+  }
+
+  .techs__title {
+    margin: 0 18px;
+    padding-top: 70px;
+    padding-bottom: 28px;
+    font-size: 18px;
+  }
+
+  .techs__subtitle {
+    margin-top: 60px;
+    width: 292px;
+    height: 36px;
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .techs__text {
+    margin-top: 24px;
+    width: 292px;
+    height: 32px;
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .techs__list {
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 188px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .techs__item {
+    margin-bottom: 10px;
+    width: 84px;
+    height: 57px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

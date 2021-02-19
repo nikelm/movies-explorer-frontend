@@ -141,3 +141,72 @@
   }
 }
 
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .aboutme {
+    min-width: 320px;
+    min-height: 863px;
+  }
+
+  .aboutme__title {
+    margin: 0 18px;
+    padding-top: 70px;
+    padding-bottom: 28px;
+    max-width: 767px;
+  }
+
+  .aboutme__container {
+    position: static;
+    padding-top: 60px;
+    margin: 0 14px;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+  }
+
+  .aboutme__photo-container {
+    position: static;
+    width: 292px;
+    height: 352px;
+  }
+
+  .aboutme__photo {
+    width: 292px;
+    height: 352px;
+  }
+
+  .aboutme__myself {
+    width: 292px;
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .aboutme__profile {
+    margin: 0 14px;
+    padding-top: 40px;
+    max-width: 767px;
+  }
+
+  .aboutme__name {
+    height: 36px;
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .aboutme__profession {
+    padding-top: 20px;
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .aboutme__myself {
+    padding-top: 20px;
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .aboutme__social-list {
+    padding-top: 40px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
