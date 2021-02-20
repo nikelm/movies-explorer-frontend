@@ -186,7 +186,7 @@
 
   .about-project__column {
     margin: 0 auto;
-    width: 284px;
+    width: calc(100% -28px);
     height: 164px;
 
   }
@@ -199,7 +199,7 @@
   }
 
   .about-project__text {
-    width: 284px;
+    width: calc(100% - 28px);
     height: 48px;
     font-size: 11px;
     padding-bottom: 56px;
@@ -213,7 +213,7 @@
   .about-project__column-frontend {
     margin: 0;
     height: 58px;
-    width: 184px;
+    width: calc(100% - 14px);
 
   }
 
@@ -225,9 +225,9 @@
   .about-project__table_res320 {
     padding: 0;
     display: flex;
-    width: 284px;
+    width: calc(100% - 28px);
     height: 58px;
-    margin: 0 auto;
+    margin: 0 14px;
   }
 
   .about-project__text-progress {

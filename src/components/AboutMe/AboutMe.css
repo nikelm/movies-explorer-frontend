@@ -159,13 +159,14 @@
     padding-top: 60px;
     margin: 0 14px;
     flex-wrap: wrap-reverse;
-    justify-content: center;
+
   }
 
   .aboutme__photo-container {
     position: static;
     width: 292px;
     height: 352px;
+    margin: 0 auto;
   }
 
   .aboutme__photo {
@@ -174,14 +175,15 @@
   }
 
   .aboutme__myself {
-    width: 292px;
+    width: 100%;
     font-size: 11px;
     line-height: 16px;
   }
 
   .aboutme__profile {
-    margin: 0 14px;
+    margin: 0 auto;
     padding-top: 40px;
+    width: 100%;
     max-width: 767px;
   }
 
