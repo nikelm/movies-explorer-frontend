@@ -16,7 +16,10 @@ function Profile(props) {
             <li className="profile__data-list-user profile_pad">{props.email}</li>
           </ul>
         </div>
-        <button className="profile__button">Редактировать</button>
+        <div className="profile__button">
+          <button className="profile__button-change">Редактировать</button>
+          <button className="profile__button-logout">Выйти из аккаунта</button>
+        </div>
       </section>
 
     </>

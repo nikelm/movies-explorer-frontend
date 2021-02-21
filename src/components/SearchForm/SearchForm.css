@@ -1,0 +1,92 @@
+.search {
+  margin: 0 auto;
+  max-width: 1280px;
+  height: 242px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.seach__container {
+  margin: 0 70px;
+  padding: 0;
+  padding-left: 25px;
+  padding-right: 10px;
+  max-width: 1140px;
+  border: 1.5px solid rgba(170, 170, 170, .2);
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+.search__input {
+  padding: 0;
+  /*width: 995px;*/
+  width: calc(100vw - (140px + 25px) - (140px + 10px));
+  max-width: 995px;
+  height: 72px;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 20px;
+  color: #A0A0A0;
+}
+
+.search__input:focus {
+  outline: none;
+}
+
+.search__submit {
+  padding: 0;
+  width: 100px;
+  height: 52px;
+  border: none;
+  background-color: #3456F3;
+  border-radius: 5px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.search__submit:hover {
+  cursor: pointer;
+}
+
+.seach__filter {
+  margin: 0 70px;
+  margin-top: 26px;
+  padding: 0;
+  width: calc(100vw - 70px - 70px);
+  max-width: 1280px;
+  height: 62px;
+  border: none;
+  display: flex;
+  align-items: flex-start;
+  border-bottom: 1px solid rgba(170, 170, 170, .2);
+}
+
+.search__choice {
+  border: none;
+  padding: 0;
+  width: 36px;
+  height: 20px;
+  background-color: transparent;
+  background-image: url('../../images/smalltumbon.svg');
+}
+
+.search_label {
+  margin-left: 14px;
+  font-family: 'Inter',sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 18px;
+  color: #000000;
+}

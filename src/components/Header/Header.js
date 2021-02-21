@@ -13,9 +13,10 @@ function Header(props) {
           <p className="header__nav-title">{props.title}</p>
           <p className="header__nav-subtitle">{props.subtitle}</p>
         <Navigation
-          login="Войти"
-          registration="Регистрация"
-          header="header"
+          icon_profile="icon_profile"
+          login="Аккаунт"
+          registration=""
+          header="header__nav-item header__nav-item_login header__nav-profile"
         />
         </div>
       </header>

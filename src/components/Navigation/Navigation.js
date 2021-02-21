@@ -7,7 +7,10 @@ function Navigation(props) {
       <nav className="header__nav">
           <div className="header__nav-list">
             <button className="header__nav-item header__nav-item_registration">{props.registration}</button>
-            <button className="header__nav-item header__nav-item_login">{props.login}</button>
+              <button className={props.header}>
+                <div className={props.icon_profile}></div>
+                <p className="header__nav-profile-text">{props.login}</p>
+              </button>
           </div>
         </nav>
     </>
