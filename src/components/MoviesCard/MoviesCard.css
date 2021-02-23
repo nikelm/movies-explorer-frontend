@@ -1,0 +1,149 @@
+.movies__container {
+  max-width: 360px;
+  background: #FDFDFD;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+}
+
+.movies__container-title {
+  margin: 0 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.movies__save {
+  border: none;
+  padding: 0;
+  display: block;
+  margin: 0 auto;
+  width: 100px;
+  height: 29px;
+  margin-top: 18px;
+  border-radius: 30px;
+  background: #F9F9F9;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 11px;
+}
+
+.movies__save:hover {
+  cursor: pointer;
+}
+
+.movies__save:focus {
+  outline: none;
+}
+
+.movies__save_enable {
+  background: transparent;
+  background-image: url('../../images/saved.svg');
+}
+
+.movies__save_disable {
+  background: transparent;
+  background-image: url('../../images/saved_off.png');
+}
+
+.movies__title {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+  color: #000000;
+}
+
+.movies__duration {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 18px;
+  color: #A0A0A0;
+}
+
+.movies__more {
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 80px;
+  padding: 0;
+  border: 1px solid #E8E8E8;
+  background: transparent;
+  width: 320px;
+  height: 36px;
+  display: block;
+}
+
+.movies__more:hover {
+  cursor: pointer;
+}
+
+.movies__disable {
+  display: none;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1180px) {
+  .movies__container {
+    max-width: 342px;
+    height: 309px;
+  }
+
+  .movies__poster {
+    max-width: 342px;
+  }
+
+  .movies__hidden_768 {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+
+  .movies__container {
+    margin: 0 10px;
+    width: 300px;
+    height: 271px;
+  }
+
+  .movies__hidden_768 {
+    display: none;
+  }
+
+  .movies__hidden_320 {
+    display: none;
+  }
+
+  .movies__poster {
+    margin: 0 auto;
+    max-width: 300px;
+    height: 168px;
+    display: block;
+  }
+
+  .movies__save {
+    margin-top: 14px;
+    font-size: 12px;
+    line-height: 11px;
+  }
+
+  .movies__more {
+    width: 240px;
+    height: 36px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .movies__title {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .movies__duration {
+    font-size: 10px;
+    line-height: 18px;
+  }
+
+}

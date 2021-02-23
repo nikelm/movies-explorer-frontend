@@ -10,7 +10,7 @@ function App() {
       <Header
         title=""
         subtitle=""
-        header="header header_color"
+        header="header"
       />
       <Main />
       <Footer />

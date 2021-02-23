@@ -8,7 +8,9 @@ function Header(props) {
   return (
     <>
       <header className={props.header}>
-        <img className="header__logo" alt="Логотип" src={logo} />
+        <a href="/" >
+          <img className="header__logo" alt="Логотип" src={logo} />
+        </a>
         <div className="header__nav">
           <p className="header__nav-title">{props.title}</p>
           <p className="header__nav-subtitle">{props.subtitle}</p>
