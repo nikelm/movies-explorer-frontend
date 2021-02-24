@@ -1,7 +1,14 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import './Register.css';
 
 function Register(props) {
+  const history = useHistory();
+
+  function handleButtonLogin() {
+    history.push('/signin');
+  }
+
   return (
     <>
       <section className="register">
@@ -23,7 +30,7 @@ function Register(props) {
 
         <div className="register__container">
           <p className="register__text">Уже зарегистрированы?</p>
-          <button className="register__login" type="button">Войти</button>
+          <button className="register__login" type="button" onClick={handleButtonLogin}>Войти</button>
         </div>
 
       </section>

@@ -2,9 +2,24 @@ import React from 'react';
 import './Header.css';
 import Navigation from '../Navigation/Navigation';
 import logo from '../../images/logo.svg';
+import { useHistory } from 'react-router-dom';
 
 
 function Header(props) {
+  const history = useHistory();
+
+  function handleButtonRegister() {
+    history.push('/signup');
+  }
+
+  function handleButtonLogin() {
+    history.push('/signin');
+  }
+
+  function handleButtonProfile() {
+    history.push('/profile');
+  }
+
   return (
     <>
       <header className={props.header}>
@@ -15,10 +30,14 @@ function Header(props) {
           <p className="header__nav-title">{props.title}</p>
           <p className="header__nav-subtitle">{props.subtitle}</p>
         <Navigation
-          icon_profile="icon_profile"
-          login="Аккаунт"
-          registration=""
-          header="header__nav-item header__nav-item_login header__nav-profile"
+          icon_profile={props.icon_profile}
+          btnLogin={props.btnLogin}
+          btnRegistration={props.btnRegistration}
+          visibale={props.visibale}
+          nav={props.nav}
+          handleButtonRegister={handleButtonRegister}
+          handleButtonLogin={handleButtonLogin}
+          handleButtonProfile={handleButtonProfile}
         />
         </div>
       </header>

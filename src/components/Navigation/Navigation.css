@@ -41,6 +41,10 @@
   cursor: pointer;
 }
 
+.header__nav-item_login:focus {
+  outline: none;
+}
+
 .header__nav-profile {
   width: 100px;
   height: 32px;
@@ -51,6 +55,7 @@
   border: 2px solid rgba(170, 170, 170, .2);
   box-sizing: border-box;
   border-radius: 50px;
+  outline: none;
 }
 
 .header__nav-profile-text {
@@ -64,6 +69,10 @@
   background-image: url('../../images/icon_profile.svg');
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.header__disable {
+  display: none;
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {

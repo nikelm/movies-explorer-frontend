@@ -1,7 +1,14 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import './Profile.css'
 
 function Profile(props) {
+  const history = useHistory();
+
+  function handleButtonLogout() {
+    history.push('/signin');
+  }
+
   return (
     <>
       <section className="profile">
@@ -18,10 +25,9 @@ function Profile(props) {
         </div>
         <div className="profile__button">
           <button className="profile__button-change">Редактировать</button>
-          <button className="profile__button-logout">Выйти из аккаунта</button>
+          <button className="profile__button-logout" onClick={handleButtonLogout}>Выйти из аккаунта</button>
         </div>
       </section>
-
     </>
   );
 }
