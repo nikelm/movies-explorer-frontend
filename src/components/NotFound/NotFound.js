@@ -9,7 +9,7 @@ function NotFound(props) {
           <p className="notfound__error-value">404</p>
           <p className="notfound__error-text">Страница не найдена</p>
         </div>
-        <button className="notfound__button" type="button">Назад</button>
+        <a href="/" className="notfound__button" >Назад</a>
       </section>
     </>
   );

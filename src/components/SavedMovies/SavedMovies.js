@@ -5,10 +5,14 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 
 
 function SavedMovies(props) {
+
+
   return (
     <>
       <SearchForm />
-      <MoviesCardList />
+      <MoviesCardList
+        buttonSaved="movies__save_disable"
+      />
 
     </>
   );

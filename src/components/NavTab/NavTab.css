@@ -1,31 +1,50 @@
 .navtab {
+  position: static;
+}
 
+.navtab__rectangle {
+  width: 100%;
   height: 1024px;
-  position: relative;
   background-color: rgba(0,0,0,0.3);
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  visibility: hidden;
+  opacity: 0;
+}
 
+.navtab__rectangle_opened {
+  visibility: visible;
+  opacity: 1;
 }
 
 .navtab__container {
   width: 520px;
-  height: 1024px;
+  max-height: 1024px;
   display: flex;
   flex-direction: column;
   justify-self: flex-end;
-  outline: 1px solid red;
+
   background-color: white;
   position: fixed;
   top: 0;
   right: 0;
 
   z-index: 10;
-/*
+  /*
   visibility: visible;
   opacity: 1; */
   visibility: hidden;
   opacity: 0;
   transition: visibility 0.5s, opacity 0.5s linear;
 }
+
+.navtab__container_opened {
+  visibility: visible;
+  opacity: 1;
+}
+
 
 .navtab__button-container {
   position: relative;
@@ -64,6 +83,7 @@
 .navtab__profile {
   margin: 0 auto;
   margin-top: 621px;
+  margin-bottom: 90px;
   width: 100px;
   height: 32px;
   display: flex;
@@ -100,4 +120,16 @@
 .nav__link {
   text-decoration: none;
   color: #000000;
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .navtab__container {
+      max-width:100%;
+  }
+
+  .navtab__profile {
+    margin-bottom: 46px;
+    margin-top: 444px;
+  }
+
 }

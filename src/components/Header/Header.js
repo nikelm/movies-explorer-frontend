@@ -20,6 +20,14 @@ function Header(props) {
     history.push('/profile');
   }
 
+  function handleButtonMovies() {
+    history.push('/movies');
+  }
+
+  function handleButtonSavedMovies() {
+    history.push('/saved-movies');
+  }
+
   return (
     <>
       <header className={props.header}>
@@ -27,18 +35,18 @@ function Header(props) {
           <img className="header__logo" alt="Логотип" src={logo} />
         </a>
         <div className="header__nav">
-          <p className="header__nav-title">{props.title}</p>
-          <p className="header__nav-subtitle">{props.subtitle}</p>
-        <Navigation
-          icon_profile={props.icon_profile}
-          btnLogin={props.btnLogin}
-          btnRegistration={props.btnRegistration}
-          visibale={props.visibale}
-          nav={props.nav}
-          handleButtonRegister={handleButtonRegister}
-          handleButtonLogin={handleButtonLogin}
-          handleButtonProfile={handleButtonProfile}
-        />
+          <button className="header__nav-movies" onClick={handleButtonMovies}>{props.movies}</button>
+          <button className="header__nav-savedMovies" onClick={handleButtonSavedMovies}>{props.savedMovies}</button>
+          <Navigation
+            icon_profile={props.icon_profile}
+            btnLogin={props.btnLogin}
+            btnRegistration={props.btnRegistration}
+            visibale={props.visibale}
+            nav={props.nav}
+            handleButtonRegister={handleButtonRegister}
+            handleButtonLogin={handleButtonLogin}
+            handleButtonProfile={handleButtonProfile}
+          />
         </div>
       </header>
     </>

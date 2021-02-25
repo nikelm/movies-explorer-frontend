@@ -5,6 +5,7 @@
   display: flex;
   justify-content: space-between;
   background-color: #073042;
+  position: relative;
 }
 
 .header_color {
@@ -24,7 +25,7 @@
   align-items: center;
 }
 
-.header__nav-title {
+.header__nav-movies {
   margin-right: 16px;
   height: 18px;
   font-family: 'Inter', sans-serif;
@@ -32,15 +33,19 @@
   font-weight: 500;
   font-size: 13px;
   line-height: 18px;
+  border: none;
+  background: transparent;
 }
 
-.header__nav-subtitle {
+.header__nav-savedMovies {
   height: 18px;
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 13px;
   line-height: 18px;
+  border: none;
+  background: transparent;
 }
 
 

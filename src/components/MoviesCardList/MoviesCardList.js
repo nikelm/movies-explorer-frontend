@@ -15,6 +15,12 @@ import movie11 from '../../images/movies/pic__11.png';
 import movie12 from '../../images/movies/pic__12.png';
 
 function MoviesCardList(props) {
+  const [buttonSave, setButtonSave] = React.useState('');
+
+  function handleSaveMovie() {
+    setButtonSave('movies__save_enable');
+  }
+
   return (
     <>
       <section className="movies">
@@ -22,12 +28,15 @@ function MoviesCardList(props) {
           <MoviesCard
             movies='movies__container'
             movie = {movie1}
-            button = 'movies__save'
+            button = {buttonSave}
+            handleSaveMovie={handleSaveMovie}
+            buttonSaved={props.buttonSaved}
           />
           <MoviesCard
             movies='movies__container'
             movie = {movie2}
-            button = 'movies__save movies__save_disable'
+            button = {buttonSave}
+            handleSaveMovie={handleSaveMovie}
           />
           <MoviesCard
             movies='movies__container'
@@ -37,47 +46,56 @@ function MoviesCardList(props) {
           <MoviesCard
             movies='movies__container'
             movie = {movie4}
-            button = 'movies__save movies__save_disable'
+            button = {buttonSave}
+            handleSaveMovie={handleSaveMovie}
           />
           <MoviesCard
             movies='movies__container movies__hidden_320'
             movie = {movie5}
-            button = 'movies__save'
+            button = {buttonSave}
+            handleSaveMovie={handleSaveMovie}
           />
           <MoviesCard
             movies='movies__container movies__hidden_320'
             movie = {movie6}
-            button = 'movies__save movies__save_disable'
+            button = {buttonSave}
+            handleSaveMovie={handleSaveMovie}
           />
           <MoviesCard
             movies='movies__container movies__hidden_320'
             movie = {movie7}
-            button = 'movies__save movies__save_disable'
+            button = {buttonSave}
+            handleSaveMovie={handleSaveMovie}
           />
           <MoviesCard
             movies='movies__container movies__hidden_320'
             movie = {movie8}
-            button = 'movies__save'
+            button = {buttonSave}
+            handleSaveMovie={handleSaveMovie}
           />
           <MoviesCard
             movies='movies__container movies__hidden_768'
             movie = {movie9}
-            button = 'movies__save'
+            button = {buttonSave}
+            handleSaveMovie={handleSaveMovie}
           />
           <MoviesCard
             movies='movies__container movies__hidden_768'
             movie = {movie10}
-            button = 'movies__save'
+            button = {buttonSave}
+            handleSaveMovie={handleSaveMovie}
           />
           <MoviesCard
             movies='movies__container movies__hidden_768'
             movie = {movie11}
-            button = 'movies__save'
+            button = {buttonSave}
+            handleSaveMovie={handleSaveMovie}
           />
           <MoviesCard
             movies='movies__container movies__hidden_768'
             movie = {movie12}
-            button = 'movies__save'
+            button = {buttonSave}
+            handleSaveMovie={handleSaveMovie}
           />
         </div>
         <button className="movies__more">Ещё</button>

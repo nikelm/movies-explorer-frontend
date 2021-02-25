@@ -3,8 +3,8 @@ import { Route, Switch } from 'react-router-dom';
 import NavTab from '../NavTab/NavTab';
 import Header from '../Header/Header';
 
-/*
-import Header from '../Header/Header';
+
+
 import Promo from '../Promo/Promo';
 import AboutProject from '../AboutProject/AboutProject';
 import Techs from '../Techs/Techs';
@@ -15,7 +15,8 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
-
+import NotFound from '../NotFound/NotFound';
+/*
 import Preloader from '../Preloader/Preloader';
 import NotFound from '../NotFound/NotFound';
 */
@@ -28,17 +29,9 @@ function Main(props) {
         <Preloader />
         <NotFound />
       */}
-      <Header
-        title=""
-        subtitle=""
-        header="header header_color"
-        nav="header__nav-item header__nav-item-login header__nav-profile"
-        icon_profile="icon_profile"
-        visibale="header__disable"
-        btnLogin="Аккаунт"
-      />
+
       <NavTab />
-      {/*
+
       <Switch>
         <Route exact path="/">
           <Header
@@ -62,8 +55,8 @@ function Main(props) {
         </Route>
         <Route exact path="/movies">
           <Header
-            title=""
-            subtitle=""
+            movies="Фильмы"
+            savedMovies="Сохраненные фильмы"
             header="header header_color"
             nav="header__nav-item header__nav-item-login header__nav-profile"
             icon_profile="icon_profile"
@@ -111,8 +104,21 @@ function Main(props) {
           />
           <Register />
         </Route>
+        <Route exact path="/*">
+          <Header
+            title=""
+            subtitle=""
+            header="header"
+            icon_profile="header__disable"
+            btnLogin="Войти"
+            btnRegistration="Регистрация"
+            nav="header__nav-item header__nav-item_login"
+            visibale="header__nav-item header__nav-item_registration"
+          />
+          <NotFound />
+        </Route>
       </Switch>
-      */}
+
     </>
   );
 }
