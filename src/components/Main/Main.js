@@ -4,7 +4,7 @@ import NavTab from '../NavTab/NavTab';
 import Header from '../Header/Header';
 
 
-
+/*
 import Promo from '../Promo/Promo';
 import AboutProject from '../AboutProject/AboutProject';
 import Techs from '../Techs/Techs';
@@ -16,7 +16,7 @@ import Profile from '../Profile/Profile';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
 import NotFound from '../NotFound/NotFound';
-/*
+
 import Preloader from '../Preloader/Preloader';
 import NotFound from '../NotFound/NotFound';
 */
@@ -25,10 +25,11 @@ import './Main.css'
 function Main(props) {
   return (
     <>
+      <Header />
       {/*
         <Preloader />
         <NotFound />
-      */}
+
 
       <NavTab />
 
@@ -118,7 +119,7 @@ function Main(props) {
           <NotFound />
         </Route>
       </Switch>
-
+        */}
     </>
   );
 }
