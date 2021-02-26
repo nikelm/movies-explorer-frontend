@@ -40,7 +40,10 @@ function Header(props) {
             header__menu__movies_status={props.header__menu__movies_status}
             header__menu__auth_status={props.header__menu__auth_status}
             header__account_status={props.header__account_status}
-            header__icon__menu_status={props.header__icon__menu_status}
+            header__menu__navtab_status={props.header__menu__navtab_status}
+            handleButtonProfile={handleButtonProfile}
+            handleButtonRegister={handleButtonRegister}
+            handleButtonLogin={handleButtonLogin}
           />
         </div>
 

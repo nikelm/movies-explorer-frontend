@@ -21,7 +21,7 @@
 
 .navtab__container {
   width: 520px;
-  max-height: 1024px;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-self: flex-end;
@@ -82,7 +82,7 @@
 
 .navtab__profile {
   margin: 0 auto;
-  margin-top: 621px;
+  margin-top: 500px;
   margin-bottom: 90px;
   width: 100px;
   height: 32px;

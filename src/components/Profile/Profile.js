@@ -1,9 +1,16 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import PopupWithForm from '../PopupWithForm/PopupWithForm';
 import './Profile.css'
 
 function Profile(props) {
   const history = useHistory();
+
+  const [ isOpen, setIsOpen ] = React.useState(false);
+
+  function handleClickPopup() {
+    setIsOpen(true);
+  }
 
   function handleButtonLogout() {
     history.push('/signin');
@@ -24,10 +31,13 @@ function Profile(props) {
           </ul>
         </div>
         <div className="profile__button">
-          <button className="profile__button-change">Редактировать</button>
+          <button className="profile__button-change" onClick={handleClickPopup}>Редактировать</button>
           <button className="profile__button-logout" onClick={handleButtonLogout}>Выйти из аккаунта</button>
         </div>
       </section>
+      <PopupWithForm
+            isOpen={isOpen}
+          />
     </>
   );
 }

@@ -29,14 +29,18 @@ function Navigation(props) {
           <button type="button" className="header__login">Войти</button>
         </div>
         <div className="header__menu-nav">
-          <button type="button" className={`header__account ${props.header__account_status === undefined ? '' : props.header__account_status}`}>
+          <button type="button" className={`header__account ${props.header__account_status === undefined ? '' : props.header__account_status}`} onClick={props.handleButtonProfile}>
             <div className="header__icon"></div>
             <p className="header__text">Аккаунт</p>
           </button>
-          <div className={`header__menu-navtab ${props.header__icon__menu_status === undefined ? '' : props.header__icon__menu_status}`}></div>
+          <button className={`header__menu-navtab ${props.header__menu__navtab_status === undefined ? '' : props.header__menu__navtab_status}`} onClick={handleClickMenu}></button>
         </div>
       </nav>
-      <NavTab />
+      <NavTab
+        menuClass={menuClass}
+        rectangleClass={rectangleClass}
+        handleCloseMenu={handleCloseMenu}
+      />
     </>
   );
 }
