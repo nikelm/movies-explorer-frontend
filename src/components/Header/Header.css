@@ -8,6 +8,10 @@
   justify-content: space-between;
 }
 
+.header_color {
+  background-color: #073042;
+}
+
 .header__logo {
   width: 38px;
   height: 38px;
@@ -15,11 +19,21 @@
 }
 
 .header__container {
-  outline: 1px solid red;
 
+  width: 676px;
   min-height: 32px;
   margin-right: 70px;
 
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .header__container{
+    margin-right: 14px;
+  }
+
+  .header__logo {
+    margin-left: 14px;
+  }
 }
 /*
 .header {

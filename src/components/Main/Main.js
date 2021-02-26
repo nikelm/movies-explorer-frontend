@@ -2,15 +2,15 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import NavTab from '../NavTab/NavTab';
 import Header from '../Header/Header';
-
-
-/*
 import Promo from '../Promo/Promo';
 import AboutProject from '../AboutProject/AboutProject';
 import Techs from '../Techs/Techs';
 import AboutMe from '../AboutMe/AboutMe';
 import Portfolio from '../Portfolio/Portfolio';
 import Movies from '../Movies/Movies';
+/*
+
+
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import Login from '../Login/Login';
@@ -25,7 +25,31 @@ import './Main.css'
 function Main(props) {
   return (
     <>
-      <Header />
+      <Switch>
+        <Route exact path="/">
+          <Header
+            header="header header_color"
+            header__navauth="header__nav-auth"
+            header__menu__movies_status="header__menu__movies_disable"
+            header__account_status="header__account_disable"
+            header__icon__menu_status="header__icon__menu_disable"
+          />
+          <Promo />
+          <AboutProject />
+          <Techs />
+          <AboutMe />
+          <Portfolio />
+        </Route>
+        <Route exact path="/movies">
+          <Header
+            header="header"
+            
+            header__menu__auth_status="header__menu__auth_disable"
+            header__icon__menu_status="header__icon__menu_disable"
+          />
+          <Movies />
+        </Route>
+      </Switch>
       {/*
         <Preloader />
         <NotFound />

@@ -30,26 +30,20 @@ function Header(props) {
 
   return (
     <>
-      <header className="header">
+      <header className={props.header}>
         <a href="/" >
           <img className="header__logo" alt="Логотип" src={logo} />
         </a>
         <div className="header__container">
           <Navigation
-            valueBtn1="Фильмы"
-            valueBtn2="Сохраненные фильмы"
-            nameClassBtn3="header__disable"
+            header__navauth={props.header__navauth}
+            header__menu__movies_status={props.header__menu__movies_status}
+            header__menu__auth_status={props.header__menu__auth_status}
+            header__account_status={props.header__account_status}
+            header__icon__menu_status={props.header__icon__menu_status}
           />
         </div>
-        <div className="header__container">
-          <Navigation
-            valueBtn1="Регистрация"
-            nameClassBtn1="header__disable"
-            valueBtn="Аккаунт"
-            nameClassBtn2="header__disable"
-            nameClassBtn3="header__account"
-          />
-        </div>
+
 
       </header>
     </>
