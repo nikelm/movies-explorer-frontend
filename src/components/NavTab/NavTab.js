@@ -27,7 +27,7 @@ function NavTab(props) {
                 <a href="/movies" className="nav__link">Фильмы</a>
               </li>
               <li className="nav__list-item">
-                <a href="/save-movies" className="nav__link">Сохраненные фильмы</a>
+                <a href="/saved-movies" className="nav__link">Сохраненные фильмы</a>
               </li>
             </ul>
             <button className="navtab__profile" onClick={handleButtonProfile}>

@@ -2,6 +2,13 @@ import React from 'react';
 import './SearchForm.css';
 
 function SearchForm(props) {
+
+  const [ isEnable, setIsEnable ] = React.useState(true);
+
+  function handleButtonFilter() {
+    setIsEnable(!isEnable);
+  }
+
   return (
     <>
       <section className="search">
@@ -11,7 +18,7 @@ function SearchForm(props) {
             <button className="search__submit" type="submit">Поиск</button>
           </fieldset>
           <fieldset className="seach__filter">
-            <button className="search__choice" type="button"></button>
+            <button className={isEnable ? 'search__choice' : 'search__choice_disable'} type="button" onClick={handleButtonFilter}></button>
             <label className="search_label">Короткометражки</label>
           </fieldset>
         </form>

@@ -21,14 +21,14 @@ function Navigation(props) {
     <>
       <nav className={`header__nav ${props.header__navauth === undefined ? '' : props.header__navauth}`}>
         <div className={`${props.header__menu__movies_status === undefined ? 'header__menu-movies' : props.header__menu__movies_status}`}>
-          <button type="button" className="header__movies">Фильмы</button>
-          <button type="button" className="header__saved-movies">Сохраненные фильмы</button>
+          <button type="button" className="header__movies" onClick={props.handleButtonMovies}>Фильмы</button>
+          <button type="button" className="header__saved-movies" onClick={props.handleButtonSavedMovies}>Сохраненные фильмы</button>
         </div>
         <div className={`${(props.header__menu__auth_status) === undefined ? 'header__menu-auth' : props.header__menu__auth_status}`}>
-          <button type="button" className="header__register">Регистрация</button>
-          <button type="button" className="header__login">Войти</button>
+          <button type="button" className="header__register" onClick={props.handleButtonRegister}>Регистрация</button>
+          <button type="button" className="header__login" onClick={props.handleButtonLogin}>Войти</button>
         </div>
-        <div className="header__menu-nav">
+        <div className={`header__menu-nav ${props.header__menu__icon_status === undefined ? '' : props.header__menu__icon_status}`}>
           <button type="button" className={`header__account ${props.header__account_status === undefined ? '' : props.header__account_status}`} onClick={props.handleButtonProfile}>
             <div className="header__icon"></div>
             <p className="header__text">Аккаунт</p>

@@ -1,5 +1,6 @@
 import React from 'react';
 import './Login.css';
+import logo from '../../images/logo.svg';
 import { useHistory } from 'react-router-dom';
 
 function Login(props) {
@@ -16,6 +17,11 @@ function Login(props) {
   return (
     <>
       <section className="login">
+        <div className="login__logo-container">
+          <a href="/" >
+            <img className="login__logo" alt="Логотип" src={logo} />
+          </a>
+        </div>
         <p className="login__welcome">Рады видеть!</p>
 
         <form className="login__form">

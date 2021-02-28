@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  outline: 1px solid red;
+  
 }
 
 .header__nav-auth {
@@ -144,6 +144,10 @@
   display: none;
 }
 
+.header__menu__icon_disable {
+  display: none;
+}
+
 @media screen and (min-width: 320px) and (max-width: 1024px) {
 .header__nav {
   justify-content: flex-end;
@@ -153,7 +157,7 @@
     display: none;
   }
 
-  .header__icon__menu_disable {
+  .header__menu__navtab_disable {
     display: flex;
   }
 

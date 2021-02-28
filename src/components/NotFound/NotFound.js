@@ -1,7 +1,14 @@
 import React from 'react';
 import './NotFound.css';
+import { useHistory } from 'react-router-dom';
 
 function NotFound(props) {
+  const history = useHistory();
+
+  function handleButtonGoBack() {
+    history.push('/');
+  }
+
   return (
     <>
       <section className="notfound">
@@ -9,7 +16,7 @@ function NotFound(props) {
           <p className="notfound__error-value">404</p>
           <p className="notfound__error-text">Страница не найдена</p>
         </div>
-        <a href="/" className="notfound__button" >Назад</a>
+        <button type="button" className="notfound__button" onClick={handleButtonGoBack}>Назад</button>
       </section>
     </>
   );

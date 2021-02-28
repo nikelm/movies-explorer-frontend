@@ -8,9 +8,14 @@ function Profile(props) {
 
   const [ isOpen, setIsOpen ] = React.useState(false);
 
-  function handleClickPopup() {
+  function openPopup() {
     setIsOpen(true);
   }
+
+  function closePopup() {
+    setIsOpen(false);
+  }
+
 
   function handleButtonLogout() {
     history.push('/signin');
@@ -31,13 +36,14 @@ function Profile(props) {
           </ul>
         </div>
         <div className="profile__button">
-          <button className="profile__button-change" onClick={handleClickPopup}>Редактировать</button>
+          <button className="profile__button-change" onClick={openPopup}>Редактировать</button>
           <button className="profile__button-logout" onClick={handleButtonLogout}>Выйти из аккаунта</button>
         </div>
       </section>
       <PopupWithForm
-            isOpen={isOpen}
-          />
+        isOpen={isOpen}
+        onClose={closePopup}
+      />
     </>
   );
 }

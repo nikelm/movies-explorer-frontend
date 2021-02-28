@@ -3,6 +3,7 @@
   margin: 0 auto;
   max-width: 1280px;
   height: 626px;
+  position: relative;
 }
 
 .profile__user-name {

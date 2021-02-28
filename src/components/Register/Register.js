@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import logo from '../../images/logo.svg';
 import './Register.css';
 
 function Register(props) {
@@ -12,6 +13,11 @@ function Register(props) {
   return (
     <>
       <section className="register">
+      <div className="register__logo-container">
+          <a href="/" >
+            <img className="register__logo" alt="Логотип" src={logo} />
+          </a>
+        </div>
         <p className="register__welcome">Добро пожаловать!</p>
 
         <form className="register__form">
