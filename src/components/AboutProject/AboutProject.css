@@ -1,0 +1,240 @@
+.about-project {
+  margin: 0 auto;
+  max-width: 1280px;
+  height: 608px;
+}
+
+.about-project__title {
+  margin: 0 70px;
+  height: 27px;
+  padding-top: 110px;
+  padding-bottom: 23px;
+  max-width: 1140px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 27px;
+  border-bottom: 1px solid #000000;
+}
+
+.about-project__table {
+  margin: 0 70px;
+  padding-top: 70px;
+  display: flex;
+
+}
+
+.about-project__column {
+  max-width: 550px;
+
+}
+
+.about-project__subtitle {
+  margin: 0;
+  margin-bottom: 26px;
+  height: 24px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
+  color: #000000;
+}
+
+.about-project__text {
+  margin: 0;
+  height: 40px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  color: #000000;
+}
+
+.about-project__column-backend {
+  margin-top: 40px;
+  height: 53px;
+
+}
+
+.about-project__backend-progress {
+  margin: 0;
+  width: 228px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  background-color: #2BE080;
+}
+
+.about-project__text-progress {
+  margin: 0;
+  height: 17px;
+  margin-top: 14px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  font-family: 'Suisse Intl', 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: #A0A0A0;
+  margin-bottom: 110px;
+}
+
+.about-project__column-frontend {
+  margin-top: 40px;
+  width: 912px;
+  height: 53px;
+}
+
+.about-frontend-progress {
+  margin: 0;
+  max-width: 912px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  background: #F2F2F2;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .about-project {
+    max-width: 768px;
+    max-height: 585px;
+  }
+  .about-project__title {
+    max-width: 668px;
+    margin: 0 50px;
+    padding-top: 90px;
+  }
+  .about-project__table {
+    margin: 0 50px;
+  }
+  .about-project__subtitle {
+    max-width: 319px;
+    min-height: 48px;
+    margin-bottom: 22px;
+  }
+
+  .about-project__column_margin-left {
+    margin: 0;
+    margin-left: 30px;
+  }
+  .about-project__column {
+    max-width: 319px;
+    max-height: 48px;
+  }
+  .about-project__text {
+    font-size: 12px;
+    line-height: 18px;
+  }
+  .about-project__column-backend {
+    margin-top: 93px;
+    max-height: 36px;
+  }
+  .about-project__column-frontend {
+    margin-top: 93px;
+    max-height: 36px;
+  }
+  .about-project__backend-progress {
+    max-width: 140px;
+    height: 36px;
+  }
+  .about-frontend-progress {
+    max-width: 528px;
+    height: 36px;
+  }
+  .about-project__text-progress {
+    max-width: 528px;
+    margin-bottom: 90px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .about-project {
+    max-width: 767px;
+    height: 641px;
+  }
+
+  .about-project__title {
+    padding-top: 70px;
+    padding-bottom: 28px;
+    margin: 0 18px;
+    font-size: 18px;
+  }
+
+  .about-project__table {
+    padding-top: 60px;
+    margin: 0 18px;
+    max-height: 328px;
+    display: block;
+  }
+
+  .about-project__column {
+    margin: 0 auto;
+    width: calc(100% -28px);
+    height: 164px;
+
+  }
+
+  .about-project__subtitle {
+    width: 284px;
+    height: 44px;
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .about-project__text {
+    width: calc(100% - 28px);
+    height: 48px;
+    font-size: 11px;
+    padding-bottom: 56px;
+  }
+
+  .about-project__column-backend {
+    margin: 0;
+    height: 58px;
+  }
+
+  .about-project__column-frontend {
+    margin: 0;
+    height: 58px;
+    width: calc(100% - 14px);
+
+  }
+
+  .about-project__backend-progress {
+    width: 100px;
+    height: 35px;
+  }
+
+  .about-project__table_res320 {
+    padding: 0;
+    display: flex;
+    width: calc(100% - 28px);
+    height: 58px;
+    margin: 0 14px;
+  }
+
+  .about-project__text-progress {
+    margin-bottom: 0;
+    font-size: 11px;
+    line-height: 13px;
+    margin-top: 10px;
+    height: 13px;
+  }
+}
