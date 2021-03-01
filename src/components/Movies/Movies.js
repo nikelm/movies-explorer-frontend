@@ -10,21 +10,25 @@ function Movies(props) {
   const [initialMovies, setInitialMovies] = React.useState([]);
   const [isPreloader, setIsPreloader] = React.useState(false);
 
-  function handleSearchMovies() {
+  useEffect(() => {
+    handleSearchMovies()
+  }, [])
+
+  function handleSearchMovies(movie) {
     setIsPreloader(true);
-    useEffect(() => {
-      apiMovies.getMovies()
-        .then((movies) => {
-          console.log(movies);
-          setInitialMovies(movies);
-        })
+    apiMovies.getMovies()
+      .then((movies) => {
+        movies.forEach(item => {
+          if (item.nameRU === movie || item.nameEN === movie) {
+            setInitialMovies(...item);
+          }
+        });
+      })
       .catch((err) => {
-        console.log(err);
       }).finally(() => {
         setIsPreloader(false);
       })
-      console.log(initialMovies);
-    }, [])
+
   }
 
 
@@ -32,6 +36,7 @@ function Movies(props) {
     <>
       <SearchForm
         onSearchMovies={handleSearchMovies}
+        initialMovies={initialMovies}
       />
       <MoviesCardList />
       <Preloader isPreloader={isPreloader} />
