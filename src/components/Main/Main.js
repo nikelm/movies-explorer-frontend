@@ -14,10 +14,14 @@ import Register from '../Register/Register';
 import NotFound from '../NotFound/NotFound';
 import Footer from '../Footer/Footer';
 
+
+
 import './Main.css';
 
 
 function Main(props) {
+
+
 
   return (
     <>
@@ -43,6 +47,7 @@ function Main(props) {
             header="header"
             header__menu__auth_status="header__menu__auth_disable"
             header__menu__navtab_status="header__menu__navtab_disable"
+
           />
           <Movies />
           <Footer />
