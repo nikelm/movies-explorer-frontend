@@ -23,6 +23,7 @@ function MoviesCardList(props) {
 
   return (
     <>
+
       <section className="movies">
         <div className="movies__grid">
           <MoviesCard
@@ -100,6 +101,7 @@ function MoviesCardList(props) {
         </div>
         <button className="movies__more">Ещё</button>
       </section>
+
     </>
   );
 }

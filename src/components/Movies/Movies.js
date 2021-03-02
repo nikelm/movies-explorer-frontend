@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './Movies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
@@ -7,10 +7,18 @@ import apiMovies from '../../utils/MoviesApi';
 
 function Movies(props) {
 
-  const [initialMovies, setInitialMovies] = React.useState([]);
   const [isPreloader, setIsPreloader] = React.useState(false);
+  const [isFounded, setIsFounded] = React.useState(false);
 
-  useEffect(() => {
+  const [initialMovies, setInitialMovies] = React.useState([]);
+  const [foundMovies, setFoundMovies] = React.useState([{}]);
+  //const [check, setCheck] = React.useState(0);
+
+  function closePreloader() {
+    setIsFounded(false);
+  }
+
+  React.useEffect(() => {
     handleSearchMovies()
   }, [])
 
@@ -18,14 +26,30 @@ function Movies(props) {
     setIsPreloader(true);
     apiMovies.getMovies()
       .then((movies) => {
-        movies.forEach(item => {
-          if (item.nameRU === movie || item.nameEN === movie) {
-            setInitialMovies(...item);
+        setInitialMovies(movies);
+      }).then(() => {
+        initialMovies.forEach((item) => {
+          if ((item.nameRU) === movie || (item.nameEN) === movie) {
+            //setCheck(check + 1);
+            setFoundMovies([...foundMovies, item])
           }
-        });
+
+         // if (check === 0) {
+           // setIsPreloader(false);
+           // setIsFounded(true);
+         // }
+          //console.log(typeof(item.nameRU))
+          //if ((item.nameRU).toString() !== movie || (item.nameEN).toString() !== movie) {
+            //setIsPreloader(false);
+            //setIsFounded(true);
+           //console.log('false')
+          //} else {
+         //   setFoundMovies(...item)
+          //console.log('true')
+          //}
+        })
       })
-      .catch((err) => {
-      }).finally(() => {
+      .catch((err) => console.log(err)).finally(() => {
         setIsPreloader(false);
       })
 
@@ -36,10 +60,21 @@ function Movies(props) {
     <>
       <SearchForm
         onSearchMovies={handleSearchMovies}
-        initialMovies={initialMovies}
+
       />
-      <MoviesCardList />
-      <Preloader isPreloader={isPreloader} />
+       <section>
+      {foundMovies.map(item => <div>{item.nameRU}</div>)}
+      </section>
+      <MoviesCardList
+        foundMovies={foundMovies}
+      />
+
+
+      <Preloader
+        isPreloader={isPreloader}
+        isFounded={isFounded}
+        closePreloader={closePreloader}
+      />
     </>
   );
 }
