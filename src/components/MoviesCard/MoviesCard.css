@@ -65,6 +65,11 @@
   color: #A0A0A0;
 }
 
+.movies__poster {
+  width: 360px;
+  height: 200px;
+}
+
 .movies__more {
   margin: 0 auto;
   margin-top: 50px;

@@ -11,7 +11,7 @@ function Movies(props) {
   const [isFounded, setIsFounded] = React.useState(false);
 
   const [initialMovies, setInitialMovies] = React.useState([]);
-  const [foundMovies, setFoundMovies] = React.useState([{}]);
+  const [foundMovies, setFoundMovies] = React.useState([]);
   //const [check, setCheck] = React.useState(0);
 
   function closePreloader() {
@@ -19,39 +19,48 @@ function Movies(props) {
   }
 
   React.useEffect(() => {
-    handleSearchMovies()
+    apiMovies.getMovies()
+    .then((movies) => {
+      setInitialMovies([...initialMovies, movies]);
+    }).catch((err) => {
+      console.log(err);
+    })
   }, [])
 
-  function handleSearchMovies(movie) {
-    setIsPreloader(true);
-    apiMovies.getMovies()
-      .then((movies) => {
-        setInitialMovies(movies);
-      }).then(() => {
-        initialMovies.forEach((item) => {
-          if ((item.nameRU) === movie || (item.nameEN) === movie) {
-            //setCheck(check + 1);
-            setFoundMovies([...foundMovies, item])
-          }
+  React.useEffect(() => {
+    handleSearchMovies()
+  }, [foundMovies])
 
-         // if (check === 0) {
-           // setIsPreloader(false);
-           // setIsFounded(true);
-         // }
-          //console.log(typeof(item.nameRU))
-          //if ((item.nameRU).toString() !== movie || (item.nameEN).toString() !== movie) {
-            //setIsPreloader(false);
-            //setIsFounded(true);
-           //console.log('false')
-          //} else {
-         //   setFoundMovies(...item)
-          //console.log('true')
-          //}
-        })
-      })
-      .catch((err) => console.log(err)).finally(() => {
-        setIsPreloader(false);
-      })
+  //var item = array.filter(item=>item.title.toLowerCase().includes('this'));
+
+  // var filterednames = names.filter(function(obj) {
+  //  return (obj.name === "Joe") && (obj.age < 30);
+  // });
+
+  function handleSearchMovies(movie) {
+    let ru = [];
+    initialMovies.forEach((item) => {
+      item.forEach((item) => {ru.push(item.nameRU)})
+    });
+
+    let en = [];
+    initialMovies.forEach((item) => {
+      item.forEach((item) => {en.push(item.nameEN)})
+    });
+
+
+    //const ru = initialMovies.filter(item=>item.nameRU.includes(movie));
+
+    console.log(en)
+    console.log(ru)
+
+
+      /*
+      if ((item.nameEN.toLowerCase().includes(movie)) || item.nameRU === movie)) && (!foundMovies.includes(item))) {
+        setFoundMovies([item, ...foundMovies])
+      }
+      */
+
 
   }
 
@@ -60,15 +69,11 @@ function Movies(props) {
     <>
       <SearchForm
         onSearchMovies={handleSearchMovies}
-
       />
-       <section>
-      {foundMovies.map(item => <div>{item.nameRU}</div>)}
-      </section>
+
       <MoviesCardList
         foundMovies={foundMovies}
       />
-
 
       <Preloader
         isPreloader={isPreloader}
