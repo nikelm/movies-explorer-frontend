@@ -27,6 +27,8 @@ function Movies(props) {
     })
   }, [])
 
+
+
   React.useEffect(() => {
     handleSearchMovies()
   }, [foundMovies])
@@ -38,21 +40,34 @@ function Movies(props) {
   // });
 
   function handleSearchMovies(movie) {
-    let ru = [];
-    initialMovies.forEach((item) => {
-      item.forEach((item) => {ru.push(item.nameRU)})
-    });
 
-    let en = [];
-    initialMovies.forEach((item) => {
-      item.forEach((item) => {en.push(item.nameEN)})
-    });
+      initialMovies.forEach((item) => {
+        item.forEach((item) => {
+          if (item.nameRU.toLowerCase().includes(movie) && (!foundMovies.includes(item))) {
+            setFoundMovies([item, ...foundMovies])
+          }
+        })
+      });
 
+      /*initialMovies.forEach((item) => {
+        item.forEach((item) => {
+          if (item.nameEN === null || item.nameEN === '') {
+            item.nameEN = 'null'
+            initialMovies.forEach((item) => {
+              if (item.nameEN.toLowerCase().includes(movie) && (!foundMovies.includes(item))) {
+                setFoundMovies([item, ...foundMovies])
+              }
+            })
+          }
+
+         console.log(item.nameEN)
+        })
+      });
 
     //const ru = initialMovies.filter(item=>item.nameRU.includes(movie));
 
-    console.log(en)
-    console.log(ru)
+   // console.log(en)
+    //console.log(ru)
 
 
       /*
