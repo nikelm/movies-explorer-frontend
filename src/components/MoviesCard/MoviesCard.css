@@ -48,15 +48,20 @@
 }
 
 .movies__title {
+  width: 255px;
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 15px;
   line-height: 18px;
   color: #000000;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .movies__duration {
+  width: 60px;
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: normal;

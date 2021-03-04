@@ -9,10 +9,11 @@ function Movies(props) {
 
   const [isPreloader, setIsPreloader] = React.useState(false);
   const [isFounded, setIsFounded] = React.useState(false);
+  const [errorMessage, setErorMessage] = React.useState('');
 
-  const [initialMovies, setInitialMovies] = React.useState([{}]);
+  const [initialMovies, setInitialMovies] = React.useState([]);
   const [foundMovies, setFoundMovies] = React.useState([]);
-  //const [check, setCheck] = React.useState(0);
+  const [value, setValue] = React.useState('');
 
   function closePreloader() {
     setIsFounded(false);
@@ -21,95 +22,51 @@ function Movies(props) {
   React.useEffect(() => {
     apiMovies.getMovies()
     .then((movies) => {
-      setInitialMovies(movies);
-    }).then(() => {
-      console.log(initialMovies)
-      test()
+      movies.forEach((item) => {
+        if (item.nameEN === null || item.nameEN === '') {
+          item.nameEN = 'noName'
+        }
+        setInitialMovies(movies);
+      })
     })
     .catch((err) => {
       console.log(err);
+      setErorMessage('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
+      setIsFounded(true);
     })
   }, [])
 
 
-  function test() {
-    initialMovies.forEach((item) => {
-      if (item.nameEN === null || item.nameEN === '') {
-        item.nameEN = 'noName'
-      }
-    })
-
-    initialMovies.forEach((item) => {
-      console.log(item)
-      if (item.nameEN.includes('noName') &&
-      (!foundMovies.includes(item))) {
-        setFoundMovies([...foundMovies, item])
-
-      }
-    })
-  }
-
   React.useEffect(() => {
-    test()
-  }, [foundMovies])
+    const founded = initialMovies.filter((item) => {
+      return (item.nameEN.toLowerCase().includes(value) || item.nameRU.toLowerCase().includes(value))
+    })
+    if (founded.length === 0 && value !== '') {
+      setErorMessage('Ничего не найдено!')
+      setIsFounded(true);
+    }
+    setFoundMovies(founded,...foundMovies)
+    setIsPreloader(false)
+  }, [value])
 
-  //var item = array.filter(item=>item.title.toLowerCase().includes('this'));
 
-  // var filterednames = names.filter(function(obj) {
-  //  return (obj.name === "Joe") && (obj.age < 30);
-  // });
 
   function handleSearchMovies(movie) {
+    setIsPreloader(true)
+    if (movie.length < 3) {
+      setErorMessage('Ведите в поиск минимум 3 символа')
+      setIsFounded(true);
+      setIsPreloader(false)
+      return
+    }
+    if (movie === value) {
+      setErorMessage('Ничего нового не найдено!!')
+      setIsPreloader(false)
+      setIsFounded(true);
+      return
+    }
 
-    // Stones in Exile
-    /*
-    initialMovies.forEach((item) => {
-      if (item.nameEN === null || item.nameEN === '') {
-        item.nameEN = 'noName'
-      }
-    })
-
-    initialMovies.forEach((item) => {
-      if (item.nameEN.includes('noName') &&
-      (!foundMovies.includes(item))) {
-        setFoundMovies([...foundMovies, item])
-
-      }
-    })
-*/
-    console.log(foundMovies)
-
-    /*
-    getedMovies.forEach((item) => {
-      item.forEach((item) => {
-
-        if (item.nameEN === null || item.nameEN === '') {
-          item.nameEN = 'noName'
-        }
-      })
-    })
-*/
-    // const result = getedMovies[0].filter((item) => item.nameEN.includes(movie))
-
-
-
-    /*
-    getedMovies.forEach((item) => {
-      item.forEach((item) => {
-        console.log(item.nameEN.includes(movie))
-        if ((item.nameRU.toLowerCase().includes(movie) ||
-            item.nameEN.toLowerCase().includes(movie)) &&
-              (!foundMovies.includes(item))) {
-            setFoundMovies([item, ...foundMovies])
-        }
-      })
-    })
-    */
-
-   // console.log(foundMovies)
-
-
-
+    setValue(movie.toLowerCase())
   }
 
 
@@ -126,6 +83,7 @@ function Movies(props) {
       <Preloader
         isPreloader={isPreloader}
         isFounded={isFounded}
+        errorMessage={errorMessage}
         closePreloader={closePreloader}
       />
     </>

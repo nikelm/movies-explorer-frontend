@@ -32,7 +32,7 @@ function SearchForm(props) {
       <section className="search">
         <form className="search__form" noValidate>
           <fieldset className="seach__container">
-            <input id="movie-input" className="search__input" type="text" placeholder="Фильм" required name="movie" value={movie} onChange={handleMovieChange}/>
+            <input id="movie-input" className="search__input" type="text" placeholder="Фильм" required name="movie" value={movie} onChange={handleMovieChange} minLength= "3"/>
             <button className="search__submit" type="submit" onClick={handleFormSubmit} disabled={isError}>Поиск</button>
           </fieldset>
           <fieldset className="seach__filter">

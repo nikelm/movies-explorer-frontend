@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import movie1 from '../../images/movies/pic__1.png';
@@ -22,7 +22,9 @@ function MoviesCardList(props) {
   }
 
 
-  //console.log(props.foundMovies)
+  // console.log(props.foundMovies)
+
+  console.log(props.foundMovies)
 
   /*
 
@@ -47,22 +49,24 @@ function MoviesCardList(props) {
 
       <section className="movies">
         <div className="movies__grid">
-
+        {props.foundMovies.map(item =>
           <MoviesCard
-
+            key = {item.id}
             movies='movies__container'
             movie = {movie1}
             button = {buttonSave}
             handleSaveMovie={handleSaveMovie}
             buttonSaved={props.buttonSaved}
             foundMovies={props.foundMovies}
-
+            title={item.nameRU}
+            duration={item.duration}
+            thumbnail={item.image.url}
           />
-       
+        )}
 
         {/*
           <MoviesCard
-            movies='movies__container'
+            movies='movi       es__container'
             movie = {movie2}
             button = {buttonSave}
             handleSaveMovie={handleSaveMovie}

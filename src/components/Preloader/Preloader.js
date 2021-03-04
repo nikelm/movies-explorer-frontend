@@ -12,7 +12,7 @@ const Preloader = (props) => {
             </div>
         </div>
         <div className={props.isFounded ? 'preloader' : 'preloader_disable'} >
-          <p className="preloader__text">Ничего не найдено!</p>
+          <p className="preloader__text">{props.errorMessage}</p>
           <button type="button" onClick={props.closePreloader}>ОК</button>
         </div>
       </>
