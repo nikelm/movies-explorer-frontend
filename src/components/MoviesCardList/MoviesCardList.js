@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import movie1 from '../../images/movies/pic__1.png';
@@ -20,27 +20,13 @@ function MoviesCardList(props) {
   function handleSaveMovie() {
     setButtonSave('movies__save_enable');
   }
-/*
-  const [url, setUrl] = React.useState('');
 
-  function checkUrl() {
-    props.foundMovies.map(item =>{
-      if (item.image !== undefined) {
-        setUrl(item.image.formats.thumbnail.url);
-      }
-    });
-  }
 
-  checkUrl();
-  console.log(url)
-*/
+  //console.log(props.foundMovies)
 
-  return (
-    <>
+  /*
 
-      <section className="movies">
-        <div className="movies__grid">
-        {props.foundMovies.map(item =>
+   {props.foundMovies.map(item =>
           <MoviesCard
             key = {item.id}
             movies='movies__container'
@@ -54,6 +40,25 @@ function MoviesCardList(props) {
             thumbnail={item.image.url}
           />
         )}
+  */
+
+  return (
+    <>
+
+      <section className="movies">
+        <div className="movies__grid">
+
+          <MoviesCard
+
+            movies='movies__container'
+            movie = {movie1}
+            button = {buttonSave}
+            handleSaveMovie={handleSaveMovie}
+            buttonSaved={props.buttonSaved}
+            foundMovies={props.foundMovies}
+
+          />
+       
 
         {/*
           <MoviesCard

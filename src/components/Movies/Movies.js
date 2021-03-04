@@ -10,7 +10,7 @@ function Movies(props) {
   const [isPreloader, setIsPreloader] = React.useState(false);
   const [isFounded, setIsFounded] = React.useState(false);
 
-  const [initialMovies, setInitialMovies] = React.useState([]);
+  const [initialMovies, setInitialMovies] = React.useState([{}]);
   const [foundMovies, setFoundMovies] = React.useState([]);
   //const [check, setCheck] = React.useState(0);
 
@@ -21,16 +21,36 @@ function Movies(props) {
   React.useEffect(() => {
     apiMovies.getMovies()
     .then((movies) => {
-      setInitialMovies([...initialMovies, movies]);
-    }).catch((err) => {
+      setInitialMovies(movies);
+    }).then(() => {
+      console.log(initialMovies)
+      test()
+    })
+    .catch((err) => {
       console.log(err);
     })
   }, [])
 
 
+  function test() {
+    initialMovies.forEach((item) => {
+      if (item.nameEN === null || item.nameEN === '') {
+        item.nameEN = 'noName'
+      }
+    })
+
+    initialMovies.forEach((item) => {
+      console.log(item)
+      if (item.nameEN.includes('noName') &&
+      (!foundMovies.includes(item))) {
+        setFoundMovies([...foundMovies, item])
+
+      }
+    })
+  }
 
   React.useEffect(() => {
-    handleSearchMovies()
+    test()
   }, [foundMovies])
 
   //var item = array.filter(item=>item.title.toLowerCase().includes('this'));
@@ -41,40 +61,53 @@ function Movies(props) {
 
   function handleSearchMovies(movie) {
 
-      initialMovies.forEach((item) => {
-        item.forEach((item) => {
-          if (item.nameRU.toLowerCase().includes(movie) && (!foundMovies.includes(item))) {
-            setFoundMovies([item, ...foundMovies])
-          }
-        })
-      });
-
-      /*initialMovies.forEach((item) => {
-        item.forEach((item) => {
-          if (item.nameEN === null || item.nameEN === '') {
-            item.nameEN = 'null'
-            initialMovies.forEach((item) => {
-              if (item.nameEN.toLowerCase().includes(movie) && (!foundMovies.includes(item))) {
-                setFoundMovies([item, ...foundMovies])
-              }
-            })
-          }
-
-         console.log(item.nameEN)
-        })
-      });
-
-    //const ru = initialMovies.filter(item=>item.nameRU.includes(movie));
-
-   // console.log(en)
-    //console.log(ru)
-
-
-      /*
-      if ((item.nameEN.toLowerCase().includes(movie)) || item.nameRU === movie)) && (!foundMovies.includes(item))) {
-        setFoundMovies([item, ...foundMovies])
+    // Stones in Exile
+    /*
+    initialMovies.forEach((item) => {
+      if (item.nameEN === null || item.nameEN === '') {
+        item.nameEN = 'noName'
       }
-      */
+    })
+
+    initialMovies.forEach((item) => {
+      if (item.nameEN.includes('noName') &&
+      (!foundMovies.includes(item))) {
+        setFoundMovies([...foundMovies, item])
+
+      }
+    })
+*/
+    console.log(foundMovies)
+
+    /*
+    getedMovies.forEach((item) => {
+      item.forEach((item) => {
+
+        if (item.nameEN === null || item.nameEN === '') {
+          item.nameEN = 'noName'
+        }
+      })
+    })
+*/
+    // const result = getedMovies[0].filter((item) => item.nameEN.includes(movie))
+
+
+
+    /*
+    getedMovies.forEach((item) => {
+      item.forEach((item) => {
+        console.log(item.nameEN.includes(movie))
+        if ((item.nameRU.toLowerCase().includes(movie) ||
+            item.nameEN.toLowerCase().includes(movie)) &&
+              (!foundMovies.includes(item))) {
+            setFoundMovies([item, ...foundMovies])
+        }
+      })
+    })
+    */
+
+   // console.log(foundMovies)
+
 
 
   }
