@@ -19,12 +19,12 @@ function Movies(props) {
     setIsFounded(false);
   }
 
-  React.useEffect(() => {
+  function moviesGet() {
     apiMovies.getMovies()
     .then((movies) => {
       movies.forEach((item) => {
         if (item.nameEN === null || item.nameEN === '') {
-          item.nameEN = 'noName'
+        item.nameEN = 'noName'
         }
         setInitialMovies(movies);
       })
@@ -34,8 +34,12 @@ function Movies(props) {
       setErorMessage('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
       setIsFounded(true);
     })
-  }, [])
+  }
+  
+  React.useEffect(() => {
 
+    moviesGet();
+  }, [], [initialMovies])
 
   React.useEffect(() => {
     const founded = initialMovies.filter((item) => {
@@ -47,12 +51,15 @@ function Movies(props) {
     }
     setFoundMovies(founded,...foundMovies)
     setIsPreloader(false)
-  }, [value])
+  }, [value], [initialMovies])
 
 
 
   function handleSearchMovies(movie) {
     setIsPreloader(true)
+
+    moviesGet()
+
     if (movie.length < 3) {
       setErorMessage('Ведите в поиск минимум 3 символа')
       setIsFounded(true);
