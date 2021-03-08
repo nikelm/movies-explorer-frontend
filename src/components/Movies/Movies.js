@@ -12,7 +12,7 @@ function Movies(props) {
   const [errorMessage, setErorMessage] = React.useState('');
 
   const [initialMovies, setInitialMovies] = React.useState([]);
-  const [foundMovies, setFoundMovies] = React.useState([]);
+  const [foundMovies, setFoundMovies] = React.useState(JSON.parse(localStorage.getItem('prevSearch')));
   const [value, setValue] = React.useState('');
 
   function closePreloader() {
@@ -35,7 +35,7 @@ function Movies(props) {
       setIsFounded(true);
     })
   }
-  
+
   React.useEffect(() => {
 
     moviesGet();
@@ -45,11 +45,13 @@ function Movies(props) {
     const founded = initialMovies.filter((item) => {
       return (item.nameEN.toLowerCase().includes(value) || item.nameRU.toLowerCase().includes(value))
     })
+
     if (founded.length === 0 && value !== '') {
       setErorMessage('Ничего не найдено!')
       setIsFounded(true);
     }
-    setFoundMovies(founded,...foundMovies)
+    localStorage.setItem('prevSearch', JSON.stringify(founded));
+    setFoundMovies(JSON.parse(localStorage.getItem('prevSearch')),...foundMovies)
     setIsPreloader(false)
   }, [value], [initialMovies])
 

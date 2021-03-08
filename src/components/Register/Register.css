@@ -66,6 +66,7 @@
 }
 
 .register__form-error {
+  margin-top: 10px;
   border: none;
   padding: 0;
   height: 12px;
@@ -75,6 +76,7 @@
   font-size: 10px;
   line-height: 12px;
   color: #A0A0A0;
+  color: red;
 }
 
 .register__form-input-name {
@@ -135,6 +137,10 @@
   line-height: 17px;
   text-align: center;
   color: #FFFFFF;
+}
+
+.register__form-submit_disable {
+  background-color: #000000;
 }
 
 .register__form-submit:hover {
@@ -225,6 +231,7 @@
   .register__form-submit {
     max-width: 260px;
   }
+
 }
 
 @media screen and (min-width: 320px) and (max-width: 480px) {
