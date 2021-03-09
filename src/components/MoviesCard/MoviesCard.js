@@ -3,9 +3,14 @@ import './MoviesCard.css';
 
 function MoviesCard(props) {
 
+  //const [isOpen, setIsOpen] = React.useState(props.value);
+
+
+
+  console.log(props.value)
   return (
     <>
-      <div className={props.movies}>
+      <div className={props.value ? 'movies__container' : 'movies__container_disable'}>
         <div className="movies__container-title">
           <p className="movies__title">{props.title}</p>
           <p className="movies__duration">{`${props.duration} мин.`}</p>

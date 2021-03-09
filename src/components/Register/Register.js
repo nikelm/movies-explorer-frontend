@@ -2,6 +2,8 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import logo from '../../images/logo.svg';
 import './Register.css';
+import * as auth from '../../utils/MainApi';
+
 
 function Register(props) {
   const history = useHistory();
@@ -40,10 +42,6 @@ function Register(props) {
 
    }
 
-
-
-
-
   function handleSubmit(evt) {
     evt.preventDefault();
 
@@ -60,7 +58,27 @@ function Register(props) {
     }
 
 
-    console.log(name, email)
+    //console.log(name, email)
+    auth.register(name, password, email).then((res) => {
+      if (!res) {
+        setMessage('некорректно заполнено одно из полей');
+        return message;
+      } else {
+        setMessage('');
+        auth.authorize(password, email).then((data) => {
+          if (data.message) {
+            setMessage('401 - пользователь с email не найден');
+            console.log(message);
+            return (message);
+          }
+          if (data.token) {
+            
+            history.push('/movies');
+          }
+        })
+        .catch(err => console.log(err));
+      }
+    })
 
   }
 

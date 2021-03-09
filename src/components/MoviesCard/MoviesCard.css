@@ -5,6 +5,10 @@
   border-radius: 6px;
 }
 
+.movies__container_disable {
+  display: none;
+}
+
 .movies__container-title {
   margin: 0 18px;
   display: flex;
