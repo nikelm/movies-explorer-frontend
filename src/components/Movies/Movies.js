@@ -6,13 +6,13 @@ import Preloader from '../Preloader/Preloader';
 import apiMovies from '../../utils/MoviesApi';
 
 function Movies(props) {
-
+  /*
   const [isPreloader, setIsPreloader] = React.useState(false);
   const [isFounded, setIsFounded] = React.useState(false);
   const [errorMessage, setErorMessage] = React.useState('');
 
   const [initialMovies, setInitialMovies] = React.useState([]);
-  const [foundMovies, setFoundMovies] = React.useState([]);
+  const [foundMovies, setFoundMovies] = React.useState(JSON.parse(localStorage.getItem('prevSearch')));
   const [value, setValue] = React.useState('');
 
   function closePreloader() {
@@ -50,9 +50,10 @@ function Movies(props) {
       setErorMessage('Ничего не найдено!')
       setIsFounded(true);
     }
-    //localStorage.setItem('prevSearch', JSON.stringify(founded));
-    //setFoundMovies(JSON.parse(localStorage.getItem('prevSearch')),...foundMovies)
+    //const storage = localStorage.setItem('prevSearch', JSON.stringify(founded));
+    //setFoundMovies(storage,...foundMovies)
     setFoundMovies(founded,...foundMovies)
+    localStorage.setItem('prevSearch', JSON.stringify(founded));
     setIsPreloader(false)
   }, [value], [initialMovies])
 
@@ -78,16 +79,59 @@ function Movies(props) {
 
     setValue(movie.toLowerCase())
   }
+  */
 
+  const [initialMovies, setInitialMovies] = React.useState([]);
+
+  React.useEffect(() => {
+    apiMovies.getMovies()
+      .then((movies) => {
+        movies.forEach((item) => {
+          if (item.nameEN === null || item.nameEN === '') {
+            item.nameEN = 'noName'
+          }
+          setInitialMovies(movies);
+        })
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }, [])
+
+  //console.log(initialMovies);
+  const [value, setValue] = React.useState('');
+
+  function handleSearchMovies(movie) {
+
+    const founded = initialMovies.filter((item) => {
+      return (item.nameEN.toLowerCase().includes(movie.toLowerCase()) || item.nameRU.toLowerCase().includes(movie.toLowerCase()))
+    })
+
+    localStorage.setItem('prevSearch', JSON.stringify(founded));
+    setValue(movie.toLowerCase());
+  }
+
+  React.useEffect(() => {
+    JSON.parse(localStorage.getItem('prevSearch'))
+  }, [value])
+
+  // const storage = () => {JSON.parse(localStorage.getItem('prevSearch'))};
 
   return (
     <>
       <SearchForm
         onSearchMovies={handleSearchMovies}
       />
+      <MoviesCardList
+        data={JSON.parse(localStorage.getItem('prevSearch'))}
+      />
+      {/*
+      <SearchForm
+        onSearchMovies={handleSearchMovies}
+      />
 
       <MoviesCardList
-        foundMovies={foundMovies}
+
       />
 
       <Preloader
@@ -96,6 +140,7 @@ function Movies(props) {
         errorMessage={errorMessage}
         closePreloader={closePreloader}
       />
+      */}
     </>
   );
 }

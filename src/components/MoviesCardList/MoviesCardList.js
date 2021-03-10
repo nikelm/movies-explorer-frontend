@@ -38,7 +38,7 @@ function MoviesCardList(props) {
     window.addEventListener("resize", handleResize, false);
   }, [] );
 
-
+/*
 
   let displayCount;
 
@@ -70,20 +70,12 @@ function MoviesCardList(props) {
     }
   }
 */
-const [count, setCount] = React.useState(true);
 
-  function addMovies() {
-    for (let i = 0; i < data.length; i++) {
+//const data = JSON.parse(localStorage.getItem('prevSearch'));
 
-      //console.log(data[i] = false)
-      data[i].value = false;
-      setCount(false);
-    }
-  }
 
-React.useEffect(()=> {
-  addMovies()
-}, [data])
+
+
 
 /*
   let newArray = props.foundMovies.slice(0, displayCount);
@@ -109,13 +101,51 @@ React.useEffect(()=> {
 
  // console.log(displayCount)
 
+
+  let displayCount;
+  //const [displayCount, setDisplayCount] = React.useState(0);
+  const [number, setNumber] = React.useState(0);
+
+  function checkDisplay() {
+
+    if (dimensions.width < 1280 && dimensions.width >= 768) {
+      return displayCount = 2;
+    }
+
+    if (dimensions.width  >= 1280) {
+      return displayCount = 3;
+    }
+
+    if (dimensions.width <  768) {
+      return displayCount = 5;
+    }
+
+  }
+
+
+  React.useEffect(() => {
+    checkDisplay()
+  }, [dimensions])
+
+  let count = checkDisplay()
+
+  const moviesList = props.data.slice(0,count);
+
+  const [newCount, setNewCount] = React.useState(count);
+
+  function addMovies() {
+    if (props.data.length >= newCount+count) {
+      setNewCount(newCount+count);
+    }
+  }
+  console.log(newCount)
   return (
     <>
 
       <section className="movies">
         <div className="movies__grid">
-        {
-            data.map(item =>
+          {
+            moviesList.map(item =>
               <MoviesCard
                 key = {item.id}
                 movies='movies__container'
@@ -126,12 +156,9 @@ React.useEffect(()=> {
                 title={item.nameRU}
                 duration={item.duration}
                 thumbnail={item.image.url}
-                value={item.value}
+
               />
             )}
-
-
-
 
          {/*
          {moreMovie.map(item =>
