@@ -102,11 +102,12 @@ function MoviesCardList(props) {
  // console.log(displayCount)
 
 
-  let displayCount;
+
+
   //const [displayCount, setDisplayCount] = React.useState(0);
-  const [number, setNumber] = React.useState(0);
 
   function checkDisplay() {
+    let displayCount;
 
     if (dimensions.width < 1280 && dimensions.width >= 768) {
       return displayCount = 2;
@@ -127,18 +128,37 @@ function MoviesCardList(props) {
     checkDisplay()
   }, [dimensions])
 
-  let count = checkDisplay()
+  let count = checkDisplay();
+  let middleCount = checkDisplay();
+  let endCount = props.data.length;
 
-  const moviesList = props.data.slice(0,count);
+  const moviesList = props.data.slice(0, count);
+  
+  const [moreMovie, setMoreMovie] = React.useState([]);
 
-  const [newCount, setNewCount] = React.useState(count);
+  function checkCount() {
+    if (moviesList.length >= 3) {
+      return props.data.length;
+    } else
+    return props.data.length-middleCount;
+  }
+  const [number, setNumber] = React.useState(checkCount());
 
   function addMovies() {
-    if (props.data.length >= newCount+count) {
-      setNewCount(newCount+count);
+    if (count < endCount) {
+      //count = count + middleCount;
+      console.log(number)
+      setMoreMovie((props.data.slice(count, number)),...moreMovie)
     }
+    setNumber(number + middleCount);
   }
-  console.log(newCount)
+
+  console.log(moreMovie)
+/*
+  React.useEffect(() => {
+
+  }, [number])
+*/
   return (
     <>
 
@@ -160,7 +180,7 @@ function MoviesCardList(props) {
               />
             )}
 
-         {/*
+
          {moreMovie.map(item =>
           <MoviesCard
             key = {item.id}
@@ -173,7 +193,7 @@ function MoviesCardList(props) {
             duration={item.duration}
             thumbnail={item.image.url}
           />
-         )} */}
+         )}
         </div>
         <button className="movies__more" onClick={addMovies}>Ещё</button>
       </section>

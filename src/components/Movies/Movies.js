@@ -124,6 +124,7 @@ function Movies(props) {
       />
       <MoviesCardList
         data={JSON.parse(localStorage.getItem('prevSearch'))}
+
       />
       {/*
       <SearchForm

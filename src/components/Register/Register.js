@@ -19,9 +19,10 @@ function Register(props) {
   const [ password, setPassword ] = React.useState('');
   const [ message, setMessage] = React.useState('')
 
-  const [validInput, setValidInput] = React.useState({
+  /*const [validInput, setValidInput] = React.useState({
     name, password, email
   });
+  */
 
   function handleNameChange(evt) {
     setName(evt.target.value);
@@ -72,7 +73,7 @@ function Register(props) {
             return (message);
           }
           if (data.token) {
-            
+
             history.push('/movies');
           }
         })
