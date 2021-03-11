@@ -6,8 +6,10 @@ import Preloader from '../Preloader/Preloader';
 import apiMovies from '../../utils/MoviesApi';
 
 function Movies(props) {
-  /*
+
   const [isPreloader, setIsPreloader] = React.useState(false);
+
+/*
   const [isFounded, setIsFounded] = React.useState(false);
   const [errorMessage, setErorMessage] = React.useState('');
 
@@ -98,10 +100,12 @@ function Movies(props) {
       })
   }, [])
 
-  //console.log(initialMovies);
+
   const [value, setValue] = React.useState('');
 
   function handleSearchMovies(movie) {
+
+    setIsPreloader(true);
 
     const founded = initialMovies.filter((item) => {
       return (item.nameEN.toLowerCase().includes(movie.toLowerCase()) || item.nameRU.toLowerCase().includes(movie.toLowerCase()))
@@ -112,10 +116,10 @@ function Movies(props) {
   }
 
   React.useEffect(() => {
-    JSON.parse(localStorage.getItem('prevSearch'))
+    JSON.parse(localStorage.getItem('prevSearch'));
+    setIsPreloader(false);
   }, [value])
 
-  // const storage = () => {JSON.parse(localStorage.getItem('prevSearch'))};
 
   return (
     <>
@@ -126,22 +130,15 @@ function Movies(props) {
         data={JSON.parse(localStorage.getItem('prevSearch'))}
 
       />
-      {/*
-      <SearchForm
-        onSearchMovies={handleSearchMovies}
-      />
 
-      <MoviesCardList
-
-      />
 
       <Preloader
-        isPreloader={isPreloader}
-        isFounded={isFounded}
+        isPreloader={isPreloader} />
+        {/*isFounded={isFounded}
         errorMessage={errorMessage}
-        closePreloader={closePreloader}
-      />
-      */}
+  closePreloader={closePreloader} */}
+
+
     </>
   );
 }

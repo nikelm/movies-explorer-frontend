@@ -84,6 +84,10 @@
   background-image: url('../../images/smalltumbon.svg');
 }
 
+.search__choice:focus {
+  outline: none;
+}
+
 .search__choice_disable {
   border: none;
   padding: 0;

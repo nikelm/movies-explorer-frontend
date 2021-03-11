@@ -3,11 +3,7 @@ import './MoviesCard.css';
 
 function MoviesCard(props) {
 
-  //const [isOpen, setIsOpen] = React.useState(props.value);
 
-
-
-  //console.log(props.value)
   return (
     <>
       <div className={props.movies}>

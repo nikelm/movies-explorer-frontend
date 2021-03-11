@@ -7,10 +7,12 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 function SavedMovies(props) {
 
 
+
   return (
     <>
       <SearchForm />
       <MoviesCardList
+        data={JSON.parse(localStorage.getItem('prevSearch'))}
         buttonSaved="movies__save_disable"
       />
 
