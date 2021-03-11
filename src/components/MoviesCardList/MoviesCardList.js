@@ -1,16 +1,10 @@
 import React from 'react';
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
+import * as auth from '../../utils/MainApi';
 
 
 function MoviesCardList(props) {
-
-  const [buttonSave, setButtonSave] = React.useState('');
-
-  function handleSaveMovie() {
-    setButtonSave('movies__save_enable');
-  }
-
 
   const [dimensions, setDimensions] = React.useState({
     width: window.innerWidth,
@@ -62,7 +56,11 @@ function MoviesCardList(props) {
     }
   }
 
-  console.log(displayCount)
+  function onMovieSave() {
+
+  }
+
+
   const moviesList = props.data.slice(0, displayCount);
   const moviesListLength = props.data.length;
 
@@ -75,15 +73,16 @@ function MoviesCardList(props) {
             moviesList.map(item =>
               <MoviesCard
                 key = {item.id}
-                movies='movies__container'
-                button = {buttonSave}
-                handleSaveMovie={handleSaveMovie}
+                movie={item}
+                movieList={props.data}
                 buttonSaved={props.buttonSaved}
                 foundMovies={props.foundMovies}
                 title={item.nameRU}
                 duration={item.duration}
                 thumbnail={item.image.url}
-
+                onMovieSave={onMovieSave}
+                save_enable={props.save_enable}
+                save_text={props.save_text}
               />
             )}
 

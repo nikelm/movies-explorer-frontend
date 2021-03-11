@@ -1,8 +1,32 @@
 import React from 'react';
 import './MoviesCard.css';
 
+
 function MoviesCard(props) {
 
+  const [isLiked, setIsLiked] = React.useState(false);
+
+  function handleSaveMovie() {
+    if (!isLiked) {
+      setIsLiked(true);
+    } else {
+      setIsLiked(false);
+    }
+
+    setIsLiked(!isLiked);
+  }
+
+  
+
+  function handleDeleteMovie() {
+    if (!isLiked) {
+      setIsLiked(false);
+    } else {
+      setIsLiked(true);
+    }
+
+    setIsLiked(!isLiked);
+  }
 
   return (
     <>
@@ -12,8 +36,8 @@ function MoviesCard(props) {
           <p className="movies__duration">{`${props.duration} мин.`}</p>
         </div>
         <img className="movies__poster" alt="Постер к фильму" src={ `https://api.nomoreparties.co${props.thumbnail}`} />
-        <button className={`movies__save ${props.button}`} type="button" onClick={props.handleSaveMovie}>
-          {props.button === ("movies__save_enable" || "movies__save_disable") ? '' :'Сохранить'}
+        <button className={isLiked ? props.save_enable : 'movies__save'} type="button" onClick={handleSaveMovie}>
+          {isLiked ? '' : props.save_text}
         </button>
       </div>
     </>

@@ -37,3 +37,29 @@ export const authorize = (password, email) => {
   })
   .catch((err) => console.log(err));
 }
+
+
+export const saveMovie = (
+  owner, country, director, duration,
+  movieId, year, description, image,
+  trailer, nameRU, nameEN, thumbnail
+) => {
+  return fetch(`${BASE_URL}/movies`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      owner, country, director, duration,
+      movieId, year, description, image,
+      trailer, nameRU, nameEN, thumbnail
+    })
+  })
+  .then((res) => res.json())
+  .then((data) => {
+    return data;
+  })
+  .catch((err) => console.log(err));
+}
+
+

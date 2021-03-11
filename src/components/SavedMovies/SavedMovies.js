@@ -14,6 +14,8 @@ function SavedMovies(props) {
       <MoviesCardList
         data={JSON.parse(localStorage.getItem('prevSearch'))}
         buttonSaved="movies__save_disable"
+        save_enable={'movies__save movies__save_disable'}
+        save_text={''}
       />
 
     </>

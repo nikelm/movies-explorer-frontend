@@ -128,7 +128,8 @@ function Movies(props) {
       />
       <MoviesCardList
         data={JSON.parse(localStorage.getItem('prevSearch'))}
-
+        save_enable={'movies__save movies__save_enable'}
+        save_text={'Сохранить'}
       />
 
 
