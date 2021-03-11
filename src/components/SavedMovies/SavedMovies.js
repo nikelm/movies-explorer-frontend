@@ -16,6 +16,7 @@ function SavedMovies(props) {
         buttonSaved="movies__save_disable"
         save_enable={'movies__save movies__save_disable'}
         save_text={''}
+        save={true}
       />
 
     </>

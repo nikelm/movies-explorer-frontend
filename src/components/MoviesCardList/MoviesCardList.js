@@ -83,6 +83,7 @@ function MoviesCardList(props) {
                 onMovieSave={onMovieSave}
                 save_enable={props.save_enable}
                 save_text={props.save_text}
+                save={props.save}
               />
             )}
 
