@@ -2,9 +2,13 @@ import React from 'react';
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import * as auth from '../../utils/MainApi';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 
 function MoviesCardList(props) {
+
+  const currentUser = React.useContext(CurrentUserContext);
+  console.log(currentUser);
 
   const [dimensions, setDimensions] = React.useState({
     width: window.innerWidth,
@@ -59,7 +63,7 @@ function MoviesCardList(props) {
   function onMovieSave() {
 
   }
-
+  console.log(props.data)
 
   const moviesList = props.data.slice(0, displayCount);
   const moviesListLength = props.data.length;

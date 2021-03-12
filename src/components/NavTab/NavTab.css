@@ -118,6 +118,10 @@
 }
 
 .nav__link {
+  border: none;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
   text-decoration: none;
   color: #000000;
 }

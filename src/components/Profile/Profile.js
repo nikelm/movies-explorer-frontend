@@ -19,6 +19,7 @@ function Profile(props) {
 
   function handleButtonLogout() {
     history.push('/signin');
+    localStorage.removeItem('token');
   }
 
   return (

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Header from '../Header/Header';
 import Promo from '../Promo/Promo';
 import AboutProject from '../AboutProject/AboutProject';
@@ -13,7 +14,8 @@ import Login from '../Login/Login';
 import Register from '../Register/Register';
 import NotFound from '../NotFound/NotFound';
 import Footer from '../Footer/Footer';
-
+import * as auth from '../../utils/MainApi';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 
 import './Main.css';
@@ -21,10 +23,48 @@ import './Main.css';
 
 function Main(props) {
 
+  const [currentUser, setCurrentUser] = React.useState({});
 
+  React.useEffect(() => {
+    function checkToken() {
+
+      const token = localStorage.getItem('token');
+
+      if (token) {
+        auth.getContent(token).then((res) => {
+
+          if (res) {
+            setCurrentUser ({
+              'email': res.email,
+              'name': res.name
+            })
+          } else {
+            setCurrentUser ({
+              'email': '',
+              'id': ''
+            })
+            localStorage.removeItem('token');
+
+          }
+        })
+      }
+    }
+
+    checkToken();
+    // eslint-disable-next-line
+  }, [])
+
+
+
+  const [loggedIn, setLoggedIn] = React.useState(false);
+
+  function handleLogin() {
+    setLoggedIn(true);
+  }
 
   return (
     <>
+     <CurrentUserContext.Provider value={currentUser}>
       <Switch>
         <Route exact path="/">
           <Header
@@ -42,25 +82,16 @@ function Main(props) {
           <Portfolio />
           <Footer />
         </Route>
-        <Route exact path="/movies">
-          <Header
-            header="header"
-            header__menu__auth_status="header__menu__auth_disable"
-            header__menu__navtab_status="header__menu__navtab_disable"
 
-          />
-          <Movies />
-          <Footer />
+        <Route path="/signin">
+          <Login handleLogin={handleLogin}/>
         </Route>
-        <Route exact path="/saved-movies">
-        <Header
-            header="header"
-            header__menu__auth_status="header__menu__auth_disable"
-            header__menu__navtab_status="header__menu__navtab_disable"
-          />
-          <SavedMovies />
-          <Footer />
-        </Route>
+
+        <ProtectedRoute path="/movies" loggedIn={loggedIn} component={Movies} handleLogin={handleLogin}/>
+
+        <ProtectedRoute path="/saved-movies" loggedIn={loggedIn} component={SavedMovies}/>
+
+
         <Route exact path="/profile">
           <Header
             header="header"
@@ -73,9 +104,7 @@ function Main(props) {
           />
           <Footer />
         </Route>
-        <Route exact path="/signin">
-          <Login />
-        </Route>
+
         <Route exact path="/signup">
           <Register />
         </Route>
@@ -83,6 +112,7 @@ function Main(props) {
           <NotFound />
         </Route>
       </Switch>
+      </CurrentUserContext.Provider>
     </>
   );
 }

@@ -28,6 +28,7 @@ export const authorize = (password, email) => {
     return res.json()
   })
   .then((data) => {
+    
     if (data.token) {
       localStorage.setItem('token', data.token);
       return data;
@@ -59,6 +60,21 @@ export const saveMovie = (
   .then((data) => {
     return data;
   })
+  .catch((err) => console.log(err));
+}
+
+
+
+export const getContent = (token) => {
+  return fetch(`${BASE_URL}/users/me`, {
+    method: 'GET',
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization" : `Bearer ${token}`
+    }
+  })
+  .then((res) => res.json())
+  .then((data) => data)
   .catch((err) => console.log(err));
 }
 

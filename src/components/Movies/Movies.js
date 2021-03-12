@@ -4,8 +4,10 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 import apiMovies from '../../utils/MoviesApi';
+import * as auth from '../../utils/MainApi';
 
 function Movies(props) {
+
 
   const [isPreloader, setIsPreloader] = React.useState(false);
 

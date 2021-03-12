@@ -9,6 +9,7 @@ function MoviesCard(props) {
   function handleSaveMovie() {
     if (!isLiked) {
       setIsLiked(true);
+      props.onMovieSave();
     } else {
       setIsLiked(false);
     }
