@@ -32,30 +32,38 @@ function Login(props) {
   }, [])
 
   const [valid, setValid] = React.useState(false);
-  const [ email, setEmail ] = React.useState('');
-  const [ password, setPassword ] = React.useState('');
+
+  const [ inputData, setInputData ] = React.useState({ email: "", password: ""});
+  const [ inputDataValid, setInputDataValid ] = React.useState({ email: false, password: false});
+  //const [ email, setEmail ] = React.useState('');
+  //const [ password, setPassword ] = React.useState('');
   const [ message, setMessage] = React.useState('');
 
-  function handleButtonRegister() {
-    history.push('/signup');
+  React.useEffect(() => {
+    if (inputDataValid.email && inputDataValid.password) {
+      setValid(true);
+    } else {
+      setValid(false);
+    }
+  }, [inputData, inputDataValid.email, inputDataValid.password])
+
+
+  function handleEmailChange(evt) {
+    setInputData({...inputData, email: evt.target.value});
+    setInputDataValid({ ...inputDataValid, email: (/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i).test(evt.target.value)})
+    setMessage('');
   }
 
-    function handleEmailChange(evt) {
-    setEmail(evt.target.value);
-    setMessage('');
-    (email.length !==0 && password.length !==0) ? setValid(true) : setValid(false)
-   }
-
    function handlePasswordChange(evt) {
-    setPassword(evt.target.value);
+    setInputData({ ...inputData, password: evt.target.value});
+    setInputDataValid({...inputDataValid, password: (evt.target.value.length >= 8 && (/^[a-zA-Z0-9]+$/).test(evt.target.value))});
     setMessage('');
-    (email.length !==0 && password.length !==0) ? setValid(true) : setValid(false)
    }
 
    function handleButtonLogin(evt) {
     evt.preventDefault();
 
-    auth.authorize(password, email).then((data) => {
+    auth.authorize(inputData.password, inputData.email).then((data) => {
       if (!data) {
         setMessage('401 - пользователь с email не найден');
         console.log(message);
@@ -63,15 +71,20 @@ function Login(props) {
       }
       if (data.token) {
         props.handleLogin();
-
+        setValid(false);
         history.push('/movies');
+
       }
     })
     .catch(err => console.log(err));
 
   }
 
+  console.log(valid)
 
+  function handleButtonRegister() {
+    history.push('/signup');
+  }
 
   return (
     <>
@@ -85,15 +98,15 @@ function Login(props) {
 
         <form className="login__form">
           <fieldset className="login__form-email">E-mail</fieldset>
-          <input className="login__form-input-email" required type="text"  value={email} onChange={handleEmailChange} />
+          <input className={inputDataValid.email ? 'login__form-input-email' : 'login__form-input-email login__form-input-error'} required type="text"  value={inputData.email} onChange={handleEmailChange} name="email"/>
 
           <fieldset className="login__form-password">Пароль</fieldset>
-          <input className="login__form-input-password" type="password" required value={password} onChange={handlePasswordChange}/>
+          <input className={inputDataValid.password ? 'login__form-input-password' : 'login__form-input-password login__form-input-error'} type="password" required value={inputData.password} onChange={handlePasswordChange} name="password"/>
 
           <fieldset className="login__form-error">
             {message}
           </fieldset>
-          <button className="login__form-submit" type="submit" onClick={handleButtonLogin}>Войти</button>
+          <button disabled={!valid} className={valid ? 'login__form-submit' : 'login__form-submit login__form-submit_disable'}type="submit" onClick={handleButtonLogin}>Войти</button>
         </form>
 
         <div className="login__container">

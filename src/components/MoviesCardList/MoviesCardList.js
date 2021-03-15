@@ -1,7 +1,6 @@
 import React from 'react';
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
-import * as auth from '../../utils/MainApi';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 
@@ -63,7 +62,7 @@ function MoviesCardList(props) {
   function onMovieSave() {
 
   }
-  console.log(props.data)
+
 
   const moviesList = props.data.slice(0, displayCount);
   const moviesListLength = props.data.length;
@@ -83,7 +82,7 @@ function MoviesCardList(props) {
                 foundMovies={props.foundMovies}
                 title={item.nameRU}
                 duration={item.duration}
-                thumbnail={item.image.url}
+                thumbnail={item.image !== null ? item.image.url : ''}
                 onMovieSave={onMovieSave}
                 save_enable={props.save_enable}
                 save_text={props.save_text}

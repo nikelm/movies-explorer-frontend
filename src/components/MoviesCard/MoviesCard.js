@@ -1,6 +1,6 @@
 import React from 'react';
 import './MoviesCard.css';
-
+import * as auth from '../../utils/MainApi';
 
 function MoviesCard(props) {
 
@@ -9,7 +9,7 @@ function MoviesCard(props) {
   function handleSaveMovie() {
     if (!isLiked) {
       setIsLiked(true);
-      props.onMovieSave();
+      saveCurrentMovie();
     } else {
       setIsLiked(false);
     }
@@ -28,6 +28,40 @@ function MoviesCard(props) {
 
     setIsLiked(!isLiked);
   }
+
+  function saveCurrentMovie() {
+    auth.saveMovie({
+      country: props.movie.country.toString(),
+      director: props.movie.director,
+      duration: props.movie.duration,
+      movieId: props.movie.id,
+      year: props.movie.year,
+      description: props.movie.description,
+      image: `https://api.nomoreparties.co${props.movie.image.url}`,
+      trailer: props.movie.trailerLink,
+      nameRU: props.movie.nameRU,
+      nameEN: props.movie.nameEN,
+      thumbnail: `https://api.nomoreparties.co${props.movie.image.url}`,
+    }).then((data) => {
+      console.log(data)
+    }).catch(err => console.log(err));
+  }
+
+/*
+  console.log({
+    country: props.movie.country,
+    director: props.movie.director,
+    duration: props.movie.duration,
+    movieId: props.movie.id,
+    year: props.movie.year,
+    description: props.movie.description,
+    image: (props.movie.image === null ? '' : props.movie.image.url),
+    trailer: props.movie.trailerLink,
+    nameRU: props.movie.nameRU,
+    nameEN: props.movie.nameEN,
+    thumbnail: (props.movie.image === null ? '' : props.movie.image.url),
+  })
+  */
 
   return (
     <>

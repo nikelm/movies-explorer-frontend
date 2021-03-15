@@ -90,7 +90,11 @@
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
-  color:#FF3055;
+  color:#000000;
+}
+
+.login__form-input-error {
+  color: red;
 }
 
 .login__form-submit {
@@ -109,6 +113,10 @@
   line-height: 17px;
   text-align: center;
   color: #FFFFFF;
+}
+
+.login__form-submit_disable {
+  background-color: #000000;
 }
 
 .login__form-submit:hover {
