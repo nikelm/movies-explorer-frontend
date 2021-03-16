@@ -4,12 +4,31 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 import apiMovies from '../../utils/MoviesApi';
-//import * as auth from '../../utils/MainApi';
+import * as auth from '../../utils/MainApi';
 
 function Movies(props) {
 
 
   const [isPreloader, setIsPreloader] = React.useState(false);
+
+  const [status, setStatus] = React.useState(false);
+
+  const [savedMovies, setSavedMovies] = React.useState([]);
+
+  React.useEffect(() => {
+    function handleGetMovies() {
+      const token = localStorage.getItem('token');
+      if (token) {
+        auth.getMovies(token).then((res) => {
+          setSavedMovies(res);
+        }).catch((err) => {
+          console.log(err);
+        })
+      }
+    }
+
+    handleGetMovies();
+    }, [])
 
 /*
   const [isFounded, setIsFounded] = React.useState(false);
@@ -103,6 +122,24 @@ function Movies(props) {
   }, [])
 
 
+  function checkMovie() {
+
+    initialMovies.filter((item) => {
+      savedMovies.filter((i) => {
+        if (item.nameRU === i.nameRU) {
+          item['liked'] = true;
+        } else {
+          item['liked'] = false;
+        }
+      })
+    })
+   // console.log(initialMovies)
+  }
+
+  React.useEffect(() => {
+    checkMovie();
+  }, [])
+
   const [value, setValue] = React.useState('');
 
   function handleSearchMovies(movie) {
@@ -111,6 +148,16 @@ function Movies(props) {
 
     const founded = initialMovies.filter((item) => {
       return (item.nameEN.toLowerCase().includes(movie.toLowerCase()) || item.nameRU.toLowerCase().includes(movie.toLowerCase()))
+    })
+
+    founded.forEach((item) => {
+      savedMovies.forEach((i) => {
+        if (item.nameRU === i.nameRU) {
+          item['liked'] = true;
+        } else {
+          item['liked'] = false;
+        }
+      })
     })
 
     localStorage.setItem('prevSearch', JSON.stringify(founded));
@@ -132,7 +179,8 @@ function Movies(props) {
         data={JSON.parse(localStorage.getItem('prevSearch'))}
         save_enable={'movies__save movies__save_enable'}
         save_text={'Сохранить'}
-        save={false}
+        save={status}
+        checkMovie={checkMovie}
       />
 
 

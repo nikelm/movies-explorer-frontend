@@ -7,7 +7,7 @@ import CurrentUserContext from '../../contexts/CurrentUserContext';
 function MoviesCardList(props) {
 
   const currentUser = React.useContext(CurrentUserContext);
-  console.log(currentUser);
+  //console.log(currentUser);
 
   const [dimensions, setDimensions] = React.useState({
     width: window.innerWidth,
@@ -54,8 +54,10 @@ function MoviesCardList(props) {
   function addMovies() {
     if (displayCount <= 8) {
       setDisplayCount(displayCount + 2);
+      props.checkMovie();
     } else {
-      setDisplayCount(displayCount + 3)
+      setDisplayCount(displayCount + 3);
+      props.checkMovie();
     }
   }
 
@@ -66,6 +68,8 @@ function MoviesCardList(props) {
 
   const moviesList = props.data.slice(0, displayCount);
   const moviesListLength = props.data.length;
+
+  //console.log(moviesList)
 
   return (
     <>
@@ -87,6 +91,7 @@ function MoviesCardList(props) {
                 save_enable={props.save_enable}
                 save_text={props.save_text}
                 save={props.save}
+                linkimage={item.linkimage}
               />
             )}
 

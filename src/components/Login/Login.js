@@ -35,8 +35,7 @@ function Login(props) {
 
   const [ inputData, setInputData ] = React.useState({ email: "", password: ""});
   const [ inputDataValid, setInputDataValid ] = React.useState({ email: false, password: false});
-  //const [ email, setEmail ] = React.useState('');
-  //const [ password, setPassword ] = React.useState('');
+
   const [ message, setMessage] = React.useState('');
 
   React.useEffect(() => {
@@ -50,7 +49,10 @@ function Login(props) {
 
   function handleEmailChange(evt) {
     setInputData({...inputData, email: evt.target.value});
-    setInputDataValid({ ...inputDataValid, email: (/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i).test(evt.target.value)})
+
+    let pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+
+    setInputDataValid({ ...inputDataValid, email: (pattern).test(evt.target.value)})
     setMessage('');
   }
 
@@ -80,7 +82,6 @@ function Login(props) {
 
   }
 
-  console.log(valid)
 
   function handleButtonRegister() {
     history.push('/signup');

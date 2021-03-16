@@ -57,6 +57,18 @@ export const saveMovie = (data) => {
   .catch((err) => console.log(err));
 }
 
+export const getMovies = (token) => {
+  return fetch(`${BASE_URL}/movies`, {
+    method: 'GET',
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization" : `Bearer ${token}`
+    }
+  })
+  .then((res) => res.json())
+  .then((data) => data)
+  .catch((err) => console.log(err));
+}
 
 
 export const getContent = (token) => {

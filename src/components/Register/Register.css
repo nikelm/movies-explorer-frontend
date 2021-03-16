@@ -93,6 +93,8 @@
   color: #000000;
 }
 
+
+
 .register__form-input-email {
   border: none;
   outline:none;
@@ -118,7 +120,11 @@
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
-  color:#FF3055;
+  color: #000000;
+}
+
+.register__form-input-error {
+  color: red;
 }
 
 .register__form-submit {

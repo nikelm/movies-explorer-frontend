@@ -14,66 +14,73 @@ function Register(props) {
 
   const [valid, setValid] = React.useState(false);
 
-  const [ name, setName ] = React.useState('');
-  const [ email, setEmail ] = React.useState('');
-  const [ password, setPassword ] = React.useState('');
+  const [ inputData, setInputData ] = React.useState({ name: '', email: '', password: ''})
+  const [ inputDataValid, setInputDataValid ] = React.useState({ name: false, email: false, password: false});
+
   const [ message, setMessage] = React.useState('')
 
-  /*const [validInput, setValidInput] = React.useState({
-    name, password, email
-  });
-  */
+
+  React.useEffect(() => {
+    if (inputDataValid.name && inputDataValid.email && inputDataValid.password) {
+      setValid(true);
+    } else {
+      setValid(false);
+    }
+  }, [inputData, inputDataValid.email, inputDataValid.name, inputDataValid.password])
 
   function handleNameChange(evt) {
-    setName(evt.target.value);
+    setInputData({...inputData, name: evt.target.value});
+    setInputDataValid({ ...inputDataValid, name: (/^[а-яА-ЯёЁ0-9]+$/).test(evt.target.value)})
     setMessage('');
-    (name.length !==0 && email.length !==0 && password.length !==0) ? setValid(true) : setValid(false)
    }
 
   function handleEmailChange(evt) {
-    setEmail(evt.target.value);
+    setInputData({...inputData, email: evt.target.value});
+
+    let pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+
+    setInputDataValid({ ...inputDataValid, email: (pattern).test(evt.target.value)})
     setMessage('');
-    (name.length !==0 && email.length !==0 && password.length !==0) ? setValid(true) : setValid(false)
    }
 
    function handlePasswordChange(evt) {
-    setPassword(evt.target.value);
+    setInputData({ ...inputData, password: evt.target.value});
+    setInputDataValid({...inputDataValid, password: (evt.target.value.length >= 8 && (/^[a-zA-Z0-9]+$/).test(evt.target.value))});
     setMessage('');
-    (name.length !==0 && email.length !==0 && password.length !==0) ? setValid(true) : setValid(false)
 
    }
 
   function handleSubmit(evt) {
     evt.preventDefault();
 
-    if (!password || !email || !name ) {
+    if (!inputData.password || !inputData.email || !inputData.name ) {
       setMessage('Что-то пошло не так');
       return;
     }
-
+/*
     let pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
 
     if (!pattern.test(email)) {
       setMessage('Что-то пошло не так');
       return;
     }
-
+*/
 
     //console.log(name, email)
-    auth.register(name, password, email).then((res) => {
+    auth.register(inputData.name, inputData.password, inputData.email).then((res) => {
       if (!res) {
         setMessage('некорректно заполнено одно из полей');
         return message;
       } else {
         setMessage('');
-        auth.authorize(password, email).then((data) => {
+        auth.authorize(inputData.password, inputData.email).then((data) => {
           if (data.message) {
             setMessage('401 - пользователь с email не найден');
             console.log(message);
             return (message);
           }
           if (data.token) {
-
+            setValid(false);
             history.push('/movies');
           }
         })
@@ -98,16 +105,16 @@ function Register(props) {
 
         <form className="register__form" noValidate>
           <fieldset className="register__form-name">Имя</fieldset>
-          <input className="register__form-input-name" required type="text"
-          value={name} onChange={handleNameChange}/>
+          <input className={inputDataValid.name ? 'register__form-input-name': 'register__form-input-name register__form-input-error'} required type="text"
+          value={inputData.name} onChange={handleNameChange} name="name"/>
 
           <fieldset className="register__form-email">E-mail</fieldset>
-          <input className="register__form-input-email" required type="text"
-          value={email} onChange={handleEmailChange}/>
+          <input className={inputDataValid.email ? 'register__form-input-email' : 'register__form-input-email register__form-input-error'} required type="text"
+          value={inputData.email} onChange={handleEmailChange} name="email"/>
 
           <fieldset className="register__form-password">Пароль</fieldset>
-          <input className="register__form-input-password" type="password" required
-          value={password} onChange={handlePasswordChange}/>
+          <input className={inputDataValid.password ? 'register__form-input-password' : 'register__form-input-password register__form-input-error'} type="password" required
+          value={inputData.password} onChange={handlePasswordChange} name="password"/>
 
           <fieldset className="register__form-error">
             {message}
