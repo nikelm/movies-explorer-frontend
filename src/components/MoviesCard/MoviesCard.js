@@ -27,6 +27,7 @@ function MoviesCard(props) {
 
   function handleDeleteMovie() {
     if (!isLiked) {
+      deleteMovie(props.movie.movieId);
       setIsLiked(false);
     } else {
       setIsLiked(true);
@@ -51,6 +52,10 @@ function MoviesCard(props) {
     }).then((data) => {
       console.log(data)
     }).catch(err => console.log(err));
+  }
+
+  function deleteMovie(id) {
+    auth.deleteMyMovies(id)
   }
 
 /*

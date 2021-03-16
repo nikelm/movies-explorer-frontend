@@ -1,13 +1,9 @@
 import React from 'react';
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
-import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 
 function MoviesCardList(props) {
-
-  const currentUser = React.useContext(CurrentUserContext);
-  //console.log(currentUser);
 
   const [dimensions, setDimensions] = React.useState({
     width: window.innerWidth,

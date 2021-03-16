@@ -1,9 +1,15 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
-import './Profile.css'
+import './Profile.css';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
+import * as auth from '../../utils/MainApi';
 
 function Profile(props) {
+
+  const currentUser = React.useContext(CurrentUserContext);
+  console.log(currentUser)
+
   const history = useHistory();
 
   const [ isOpen, setIsOpen ] = React.useState(false);
@@ -21,6 +27,20 @@ function Profile(props) {
     history.push('/signin');
     localStorage.removeItem('token');
   }
+
+  
+
+  function handleUpdateUser(currentUser) {
+   auth.updateContent(currentUser).then(() => {
+
+    setIsOpen(false);
+    props.onChange()
+  }).catch((err) => {
+    console.log(err);
+    })
+  }
+
+
 
   return (
     <>
@@ -44,6 +64,7 @@ function Profile(props) {
       <PopupWithForm
         isOpen={isOpen}
         onClose={closePopup}
+        handleUpdateUser={handleUpdateUser}
       />
     </>
   );

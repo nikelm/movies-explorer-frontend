@@ -25,31 +25,31 @@ function Main(props) {
 
   const [currentUser, setCurrentUser] = React.useState({});
 
-  React.useEffect(() => {
-    function checkToken() {
+  function checkToken() {
 
-      const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
 
-      if (token) {
-        auth.getContent(token).then((res) => {
+    if (token) {
+      auth.getContent(token).then((res) => {
 
-          if (res) {
-            setCurrentUser ({
-              'email': res.email,
-              'name': res.name
-            })
-          } else {
-            setCurrentUser ({
-              'email': '',
-              'id': ''
-            })
-            localStorage.removeItem('token');
+        if (res) {
+          setCurrentUser ({
+            'email': res.email,
+            'name': res.name
+          })
+        } else {
+          setCurrentUser ({
+            'email': '',
+            'id': ''
+          })
+          localStorage.removeItem('token');
 
-          }
-        })
-      }
+        }
+      })
     }
+  }
 
+  React.useEffect(() => {
     checkToken();
     // eslint-disable-next-line
   }, [])
@@ -99,8 +99,9 @@ function Main(props) {
             header__menu__navtab_status="header__menu__navtab_disable"
           />
           <Profile
-            name="Николай"
-            email="user@mail.ru"
+            name={currentUser.name}
+            email={currentUser.email}
+            onChange={checkToken}
           />
           <Footer />
         </Route>
