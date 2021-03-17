@@ -53,7 +53,7 @@ function MoviesCardList(props) {
 
     } else {
       setDisplayCount(displayCount + 3);
-      
+
     }
   }
 
@@ -62,8 +62,8 @@ function MoviesCardList(props) {
   }
 
 
-  const moviesList = props.data.slice(0, displayCount);
-  const moviesListLength = props.data.length;
+  const moviesList = props.data != null ? props.data.slice(0, displayCount) : [];
+  const moviesListLength = props.data != null ? props.data.length : 0;
 
   //console.log(moviesList)
 

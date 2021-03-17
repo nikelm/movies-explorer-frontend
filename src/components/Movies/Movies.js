@@ -112,8 +112,9 @@ function Movies(props) {
   const [initialMovies, setInitialMovies] = React.useState([]);
 
   React.useEffect(() => {
+    
     apiMovies.getMovies()
-      .then((movies) => {
+    .then((movies) => {
         movies.forEach((item) => {
           if (item.nameEN === null || item.nameEN === '') {
             item.nameEN = 'noName'
