@@ -184,6 +184,12 @@ function Movies(props) {
 
   }, [value])
 
+  React.useEffect(() => {
+    JSON.parse(localStorage.getItem('prevSearch'));
+    setIsPreloader(false);
+
+  }, [status])
+
 
 
 
