@@ -5,12 +5,8 @@ import * as auth from '../../utils/MainApi';
 function MoviesCard(props) {
 
 
-
-      console.log(props.movie)
-
-
-
   const [isLiked, setIsLiked] = React.useState(props.movie.liked);
+  const [isVisiable, setIsVisiable] = React.useState('movies__container')
 
   function handleSaveMovie() {
     if (!isLiked) {
@@ -26,14 +22,17 @@ function MoviesCard(props) {
 
 
   function handleDeleteMovie() {
-    if (!isLiked) {
-      deleteMovie(props.movie.movieId);
+    if (isLiked) {
+      if (props.movie._id) {
+        deleteMovie(props.movie._id);
+        setIsVisiable('movies__container_disable');
+      }
       setIsLiked(false);
     } else {
       setIsLiked(true);
     }
 
-    setIsLiked(!isLiked);
+    //setIsLiked(!isLiked);
   }
 
   function saveCurrentMovie() {
@@ -57,6 +56,10 @@ function MoviesCard(props) {
   function deleteMovie(id) {
     auth.deleteMyMovies(id)
   }
+/*
+  React.useState(() => {
+   setIsVisiable('movies__container_disable');
+  }, [isLiked])
 
 /*
   console.log({
@@ -78,13 +81,13 @@ function MoviesCard(props) {
 
   return (
     <>
-      <div className='movies__container'>
+      <div className={`movies__container ${isVisiable}`}>
         <div className="movies__container-title">
           <p className="movies__title">{props.title}</p>
           <p className="movies__duration">{`${props.duration} мин.`}</p>
         </div>
         <img className="movies__poster" alt="Постер к фильму" src={props.linkimage ? props.linkimage : `https://api.nomoreparties.co${props.thumbnail}`} />
-        <button className={isLiked ? props.save_enable : 'movies__save'} type="button" onClick={!isLiked ? handleSaveMovie : handleDeleteMovie}>
+        <button className={isLiked ? props.save_enable : 'movies__save'} type="button" onClick={isLiked ? handleDeleteMovie  : handleSaveMovie}>
           {isLiked ? '' : props.save_text}
         </button>
       </div>

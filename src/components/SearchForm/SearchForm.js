@@ -10,6 +10,7 @@ function SearchForm(props) {
 
   function handleButtonFilter() {
     setIsEnable(!isEnable);
+    props.changeFilter();
   }
 
   function handleMovieChange(evt) {

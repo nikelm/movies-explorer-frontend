@@ -50,10 +50,10 @@ function MoviesCardList(props) {
   function addMovies() {
     if (displayCount <= 8) {
       setDisplayCount(displayCount + 2);
-      props.checkMovie();
+
     } else {
       setDisplayCount(displayCount + 3);
-      props.checkMovie();
+      
     }
   }
 

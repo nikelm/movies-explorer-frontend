@@ -11,7 +11,12 @@ function Movies(props) {
 
   const [isPreloader, setIsPreloader] = React.useState(false);
 
-  const [status, setStatus] = React.useState(false);
+  const [status, setStatus] = React.useState(true);
+
+  function changeFilter() {
+    setStatus(!status);
+  }
+
 
   const [savedMovies, setSavedMovies] = React.useState([]);
 
@@ -121,7 +126,7 @@ function Movies(props) {
       })
   }, [])
 
-
+/*
   function checkMovie() {
 
     initialMovies.filter((item) => {
@@ -139,7 +144,7 @@ function Movies(props) {
   React.useEffect(() => {
     checkMovie();
   }, [])
-
+*/
   const [value, setValue] = React.useState('');
 
   function handleSearchMovies(movie) {
@@ -147,9 +152,14 @@ function Movies(props) {
     setIsPreloader(true);
 
     const founded = initialMovies.filter((item) => {
-      return (item.nameEN.toLowerCase().includes(movie.toLowerCase()) || item.nameRU.toLowerCase().includes(movie.toLowerCase()))
-    })
+      if (status) {
+        return ((item.nameEN.toLowerCase().includes(movie.toLowerCase()) && item.duration <= 40) || (item.nameRU.toLowerCase().includes(movie.toLowerCase()) && item.duration <= 40))
+      } else {
+        return (item.nameEN.toLowerCase().includes(movie.toLowerCase()) || item.nameRU.toLowerCase().includes(movie.toLowerCase()))
+      }
 
+    })
+    /*
     founded.forEach((item) => {
       savedMovies.forEach((i) => {
         if (item.nameRU === i.nameRU) {
@@ -159,28 +169,36 @@ function Movies(props) {
         }
       })
     })
-
+    */
     localStorage.setItem('prevSearch', JSON.stringify(founded));
     setValue(movie.toLowerCase());
+
+    setIsPreloader(false);
   }
+
+
 
   React.useEffect(() => {
     JSON.parse(localStorage.getItem('prevSearch'));
     setIsPreloader(false);
+
   }, [value])
+
+
 
 
   return (
     <>
       <SearchForm
         onSearchMovies={handleSearchMovies}
+        changeFilter={changeFilter}
       />
       <MoviesCardList
         data={JSON.parse(localStorage.getItem('prevSearch'))}
         save_enable={'movies__save movies__save_enable'}
         save_text={'Сохранить'}
         save={status}
-        checkMovie={checkMovie}
+        //checkMovie={checkMovie}
       />
 
 
