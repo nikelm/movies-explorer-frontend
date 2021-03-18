@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://localhost:3003';
+export const BASE_URL = 'https://api.mymovies.students.nomoredomains.monster/';
 
 
 export const register = (name, password, email) => {
