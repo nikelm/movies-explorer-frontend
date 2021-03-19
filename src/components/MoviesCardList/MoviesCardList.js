@@ -67,6 +67,8 @@ function MoviesCardList(props) {
 
   //console.log(moviesList)
 
+
+
   return (
     <>
 
@@ -88,6 +90,7 @@ function MoviesCardList(props) {
                 save_text={props.save_text}
                 save={props.save}
                 linkimage={item.linkimage}
+                
               />
             )}
 

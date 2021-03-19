@@ -11,10 +11,10 @@ function Movies(props) {
 
   const [isPreloader, setIsPreloader] = React.useState(false);
 
-  const [status, setStatus] = React.useState(true);
+  const [ isEnable, setIsEnable ] = React.useState(true);
 
   function changeFilter() {
-    setStatus(!status);
+    setIsEnable(!isEnable);
   }
 
 
@@ -35,84 +35,12 @@ function Movies(props) {
     handleGetMovies();
     }, [])
 
-/*
-  const [isFounded, setIsFounded] = React.useState(false);
-  const [errorMessage, setErorMessage] = React.useState('');
 
-  const [initialMovies, setInitialMovies] = React.useState([]);
-  const [foundMovies, setFoundMovies] = React.useState(JSON.parse(localStorage.getItem('prevSearch')));
-  const [value, setValue] = React.useState('');
-
-  function closePreloader() {
-    setIsFounded(false);
-  }
-
-  function moviesGet() {
-    apiMovies.getMovies()
-    .then((movies) => {
-      movies.forEach((item) => {
-        if (item.nameEN === null || item.nameEN === '') {
-        item.nameEN = 'noName'
-        }
-        setInitialMovies(movies);
-      })
-    })
-    .catch((err) => {
-      console.log(err);
-      setErorMessage('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
-      setIsFounded(true);
-    })
-  }
-
-  React.useEffect(() => {
-
-    moviesGet();
-  }, [], [initialMovies])
-
-  React.useEffect(() => {
-    const founded = initialMovies.filter((item) => {
-      return (item.nameEN.toLowerCase().includes(value) || item.nameRU.toLowerCase().includes(value))
-    })
-
-    if (founded.length === 0 && value !== '') {
-      setErorMessage('Ничего не найдено!')
-      setIsFounded(true);
-    }
-    //const storage = localStorage.setItem('prevSearch', JSON.stringify(founded));
-    //setFoundMovies(storage,...foundMovies)
-    setFoundMovies(founded,...foundMovies)
-    localStorage.setItem('prevSearch', JSON.stringify(founded));
-    setIsPreloader(false)
-  }, [value], [initialMovies])
-
-
-
-  function handleSearchMovies(movie) {
-    setIsPreloader(true)
-
-    moviesGet()
-
-    if (movie.length < 3) {
-      setErorMessage('Ведите в поиск минимум 3 символа')
-      setIsFounded(true);
-      setIsPreloader(false)
-      return
-    }
-    if (movie === value) {
-      setErorMessage('Ничего нового не найдено!!')
-      setIsPreloader(false)
-      setIsFounded(true);
-      return
-    }
-
-    setValue(movie.toLowerCase())
-  }
-  */
 
   const [initialMovies, setInitialMovies] = React.useState([]);
 
   React.useEffect(() => {
-    
+
     apiMovies.getMovies()
     .then((movies) => {
         movies.forEach((item) => {
@@ -127,52 +55,23 @@ function Movies(props) {
       })
   }, [])
 
-/*
-  function checkMovie() {
 
-    initialMovies.filter((item) => {
-      savedMovies.filter((i) => {
-        if (item.nameRU === i.nameRU) {
-          item['liked'] = true;
-        } else {
-          item['liked'] = false;
-        }
-      })
-    })
-   // console.log(initialMovies)
-  }
-
-  React.useEffect(() => {
-    checkMovie();
-  }, [])
-*/
-  const [value, setValue] = React.useState('');
+  const [value, setValue] = React.useState(false);
 
   function handleSearchMovies(movie) {
 
     setIsPreloader(true);
 
     const founded = initialMovies.filter((item) => {
-      if (status) {
+      if (isEnable) {
         return ((item.nameEN.toLowerCase().includes(movie.toLowerCase()) && item.duration <= 40) || (item.nameRU.toLowerCase().includes(movie.toLowerCase()) && item.duration <= 40))
       } else {
         return (item.nameEN.toLowerCase().includes(movie.toLowerCase()) || item.nameRU.toLowerCase().includes(movie.toLowerCase()))
       }
+    })
 
-    })
-    /*
-    founded.forEach((item) => {
-      savedMovies.forEach((i) => {
-        if (item.nameRU === i.nameRU) {
-          item['liked'] = true;
-        } else {
-          item['liked'] = false;
-        }
-      })
-    })
-    */
     localStorage.setItem('prevSearch', JSON.stringify(founded));
-    setValue(movie.toLowerCase());
+    setValue(!value);
 
     setIsPreloader(false);
   }
@@ -185,26 +84,19 @@ function Movies(props) {
 
   }, [value])
 
-  React.useEffect(() => {
-    JSON.parse(localStorage.getItem('prevSearch'));
-    setIsPreloader(false);
-
-  }, [status])
-
-
-
 
   return (
     <>
       <SearchForm
         onSearchMovies={handleSearchMovies}
+        isEnable={isEnable}
         changeFilter={changeFilter}
       />
       <MoviesCardList
         data={JSON.parse(localStorage.getItem('prevSearch'))}
         save_enable={'movies__save movies__save_enable'}
         save_text={'Сохранить'}
-        save={status}
+        //save={status}
         //checkMovie={checkMovie}
       />
 

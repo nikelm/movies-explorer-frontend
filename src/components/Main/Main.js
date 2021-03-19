@@ -30,7 +30,7 @@ function Main(props) {
   const token = localStorage.getItem('token');
 
     function getUserData() {
-
+      const token = localStorage.getItem('token');
       if (token) {
         auth.getContent(token).then((res) => {
           if (res) {
@@ -38,6 +38,7 @@ function Main(props) {
               'email': res.email,
               'name': res.name
             });
+           
           } else {
             localStorage.removeItem('token');
           }
@@ -50,6 +51,7 @@ function Main(props) {
         history.push('/');
       }
     }
+
 
 
   React.useEffect(() => {
@@ -72,10 +74,11 @@ function Main(props) {
           <Header
             header={token ? 'header' : 'header header_color'}
             header__navauth={token ? '' : 'header__nav-auth'}
-            header__menu__movies_status="header__menu__movies_disable"
-            header__account_status="header__account_disable"
-            header__menu__navtab_status="header__menu__navtab_disable"
-            header__menu__icon_status="header__menu__icon_disable"
+            header__menu__auth_status={token ? 'header__menu__auth_disable': undefined}
+            header__menu__movies_status={token ? undefined : 'header__menu__movies_disable'}
+            header__account_status={token ? undefined : 'header__account_disable'}
+            header__menu__navtab_status={token ? 'header__menu__navtab_disable' : undefined}
+            header__menu__icon_status={token ? undefined : 'header__menu__icon_disable'}
           />
           <Promo />
           <AboutProject />

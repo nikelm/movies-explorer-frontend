@@ -3,14 +3,13 @@ import './SearchForm.css';
 
 function SearchForm(props) {
 
-  const [ isEnable, setIsEnable ] = React.useState(true);
   const [ isError, setIsError ] = React.useState(false);
   const [movie, setMovie] = React.useState('');
 
 
   function handleButtonFilter() {
-    setIsEnable(!isEnable);
     props.changeFilter();
+
   }
 
   function handleMovieChange(evt) {
@@ -25,6 +24,7 @@ function SearchForm(props) {
   function handleFormSubmit(evt) {
     evt.preventDefault();
     props.onSearchMovies(movie);
+
   }
 
 
@@ -37,7 +37,7 @@ function SearchForm(props) {
             <button className="search__submit" type="submit" onClick={handleFormSubmit} disabled={isError}>Поиск</button>
           </fieldset>
           <fieldset className="seach__filter">
-            <button className={isEnable ? 'search__choice' : 'search__choice_disable'} type="button" onClick={handleButtonFilter}></button>
+            <button className={props.isEnable ? 'search__choice' : 'search__choice_disable'} type="button" onClick={handleButtonFilter}></button>
             <label className="search_label">Короткометражки</label>
             <span id="movie-input-error" className={isError ? 'search__error' : 'search__error_disable'}>Нужно ввести ключевое слово</span>
           </fieldset>

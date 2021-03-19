@@ -4,7 +4,6 @@ import * as auth from '../../utils/MainApi';
 
 function MoviesCard(props) {
 
-
   const [isLiked, setIsLiked] = React.useState(props.movie.liked);
   const [isVisiable, setIsVisiable] = React.useState('movies__container')
 
@@ -32,8 +31,9 @@ function MoviesCard(props) {
       setIsLiked(true);
     }
 
-    //setIsLiked(!isLiked);
+
   }
+
 
   function saveCurrentMovie() {
     auth.saveMovie({
@@ -49,33 +49,14 @@ function MoviesCard(props) {
       nameEN: props.movie.nameEN,
       thumbnail: props.linkimage ? props.image : `https://api.nomoreparties.co${props.movie.image.url}`,
     }).then((data) => {
-      console.log(data)
+
+      //console.log(data)
     }).catch(err => console.log(err));
   }
 
   function deleteMovie(id) {
     auth.deleteMyMovies(id)
   }
-/*
-  React.useState(() => {
-   setIsVisiable('movies__container_disable');
-  }, [isLiked])
-
-/*
-  console.log({
-    country: props.movie.country,
-    director: props.movie.director,
-    duration: props.movie.duration,
-    movieId: props.movie.id,
-    year: props.movie.year,
-    description: props.movie.description,
-    image: (props.movie.image === null ? '' : props.movie.image.url),
-    trailer: props.movie.trailerLink,
-    nameRU: props.movie.nameRU,
-    nameEN: props.movie.nameEN,
-    thumbnail: (props.movie.image === null ? '' : props.movie.image.url),
-  })
-  */
 
 
 
