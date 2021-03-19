@@ -1,5 +1,5 @@
-export const BASE_URL = 'https://api.mymovies.students.nomoredomains.monster';
-
+//export const BASE_URL = 'https://api.mymovies.students.nomoredomains.monster';
+export const BASE_URL = 'http://localhost:3003';
 
 export const register = (name, password, email) => {
   return fetch(`${BASE_URL}/signup`, {
@@ -11,6 +11,7 @@ export const register = (name, password, email) => {
   })
   .then((res) => res.json())
   .then((data) => {
+    console.log(data)
     return data;
   })
   .catch((err) => console.log(err));

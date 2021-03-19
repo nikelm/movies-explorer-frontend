@@ -6,30 +6,37 @@ import * as auth from '../../utils/MainApi';
 
 
 function Login(props) {
+
   const history = useHistory();
 
   React.useEffect(() => {
-    function checkToken() {
-      const token = localStorage.getItem('token');
-      if (token) {
-        auth.getContent(token).then((res) => {
-          if (res) {
-            props.handleLogin();
-            history.push("/movies");
-          } else {
-            localStorage.removeItem('token');
-            setMessage('401 — Переданный токен некорректен или просрочен');
-          }
-        })
-      } else {
-        setMessage('');
-      }
-    }
-
-    checkToken();
-
+    props.onChange();
   // eslint-disable-next-line
   }, [])
+
+  function checkToken() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      auth.getContent(token).then((res) => {
+        if (res) {
+          props.handleLogin();
+          history.push("/movies");
+        } else {
+          localStorage.removeItem('token');
+          setMessage('401 — Переданный токен некорректен или просрочен');
+        }
+      })
+    } else {
+      setMessage('');
+      history.push('/signin');
+    }
+  }
+
+  React.useEffect(() => {
+    checkToken()
+  }, [])
+
+  //console.log(currentUser)
 
   const [valid, setValid] = React.useState(false);
 
@@ -74,11 +81,13 @@ function Login(props) {
       if (data.token) {
         props.handleLogin();
         setValid(false);
+        props.onChange();
         history.push('/movies');
 
       }
     })
     .catch(err => console.log(err));
+
 
   }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Header from '../Header/Header';
 import Promo from '../Promo/Promo';
@@ -25,35 +25,35 @@ function Main(props) {
 
   const [currentUser, setCurrentUser] = React.useState({});
 
-  function checkToken() {
+  const history = useHistory();
 
-    const token = localStorage.getItem('token');
-
-    if (token) {
-      auth.getContent(token).then((res) => {
-
-        if (res) {
-          setCurrentUser ({
-            'email': res.email,
-            'name': res.name
-          })
-        } else {
-          setCurrentUser ({
-            'email': '',
-            'id': ''
-          })
-          localStorage.removeItem('token');
-
-        }
-      })
+    function getUserData() {
+      const token = localStorage.getItem('token');
+      if (token) {
+        auth.getContent(token).then((res) => {
+          if (res) {
+            setCurrentUser ({
+              'email': res.email,
+              'name': res.name
+            });
+          } else {
+            localStorage.removeItem('token');
+          }
+        })
+      } else {
+        setCurrentUser ({
+          'email': 'no email',
+          'name': 'no name'
+        });
+        history.push('/');
+      }
     }
-  }
+
 
   React.useEffect(() => {
-    checkToken();
+    getUserData();
     // eslint-disable-next-line
   }, [])
-
 
 
   const [loggedIn, setLoggedIn] = React.useState(false);
@@ -64,7 +64,7 @@ function Main(props) {
 
   return (
     <>
-     <CurrentUserContext.Provider value={currentUser}>
+    <CurrentUserContext.Provider value={currentUser}>
       <Switch>
         <Route exact path="/">
           <Header
@@ -84,7 +84,7 @@ function Main(props) {
         </Route>
 
         <Route path="/signin">
-          <Login handleLogin={handleLogin}/>
+          <Login handleLogin={handleLogin} onChange={getUserData}/>
         </Route>
 
         <ProtectedRoute path="/movies" loggedIn={loggedIn} component={Movies} handleLogin={handleLogin}/>
@@ -101,7 +101,7 @@ function Main(props) {
           <Profile
             name={currentUser.name}
             email={currentUser.email}
-            onChange={checkToken}
+            onChange={getUserData}
           />
           <Footer />
         </Route>

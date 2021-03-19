@@ -3,10 +3,13 @@ import { useHistory } from 'react-router-dom';
 import logo from '../../images/logo.svg';
 import './Register.css';
 import * as auth from '../../utils/MainApi';
+//import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 
 function Register(props) {
   const history = useHistory();
+
+  
 
   function handleButtonLogin() {
     history.push('/signin');
@@ -81,7 +84,7 @@ function Register(props) {
           }
           if (data.token) {
             setValid(false);
-            history.push('/movies');
+            history.push('/signin');
           }
         })
         .catch(err => console.log(err));

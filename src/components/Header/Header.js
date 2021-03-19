@@ -25,7 +25,7 @@ function Header(props) {
   }
 
   function handleButtonSavedMovies() {
-    props.handleLogin();
+    //props.handleLogin();
     history.push('/saved-movies');
   }
 
