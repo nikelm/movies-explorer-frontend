@@ -27,8 +27,10 @@ function Main(props) {
 
   const history = useHistory();
 
+  const token = localStorage.getItem('token');
+
     function getUserData() {
-      const token = localStorage.getItem('token');
+
       if (token) {
         auth.getContent(token).then((res) => {
           if (res) {
@@ -68,8 +70,8 @@ function Main(props) {
       <Switch>
         <Route exact path="/">
           <Header
-            header="header header_color"
-            header__navauth="header__nav-auth"
+            header={token ? 'header' : 'header header_color'}
+            header__navauth={token ? '' : 'header__nav-auth'}
             header__menu__movies_status="header__menu__movies_disable"
             header__account_status="header__account_disable"
             header__menu__navtab_status="header__menu__navtab_disable"
