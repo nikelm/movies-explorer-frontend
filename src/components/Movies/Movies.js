@@ -10,6 +10,11 @@ function Movies(props) {
 
 
   const [isPreloader, setIsPreloader] = React.useState(false);
+  const [isFounded, setIsFounded] = React.useState(false);
+
+  function closePreloader() {
+    setIsFounded(false);
+  }
 
   const [ isEnable, setIsEnable ] = React.useState(true);
 
@@ -73,13 +78,18 @@ function Movies(props) {
     localStorage.setItem('prevSearch', JSON.stringify(founded));
     setValue(!value);
 
-    setIsPreloader(false);
+
   }
 
 
 
   React.useEffect(() => {
     JSON.parse(localStorage.getItem('prevSearch'));
+    
+    if (JSON.parse(localStorage.getItem('prevSearch')).length === 0) {
+      setIsFounded(true);
+    }
+
     setIsPreloader(false);
 
   }, [value])
@@ -96,16 +106,14 @@ function Movies(props) {
         data={JSON.parse(localStorage.getItem('prevSearch'))}
         save_enable={'movies__save movies__save_enable'}
         save_text={'Сохранить'}
-        //save={status}
-        //checkMovie={checkMovie}
       />
 
 
       <Preloader
-        isPreloader={isPreloader} />
-        {/*isFounded={isFounded}
-        errorMessage={errorMessage}
-  closePreloader={closePreloader} */}
+        isFounded={isFounded}
+        isPreloader={isPreloader}
+        closePreloader={closePreloader}
+      />
 
 
     </>

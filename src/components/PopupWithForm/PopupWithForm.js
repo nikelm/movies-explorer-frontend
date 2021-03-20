@@ -19,7 +19,7 @@ function PopupWithForm(props) {
   function handleNameChange(evt) {
     setInputData({...inputData, name: evt.target.value});
 
-    let pattern = new RegExp(/[а-яА-Яa-zA-Z0-9\-\s]+$/);
+    let pattern = new RegExp(/[а-яА-Я0-9\-\s]+$/);
     setInputDataValid({ ...inputDataValid, name: (pattern).test(evt.target.value)});
   }
 
@@ -44,12 +44,12 @@ function PopupWithForm(props) {
       <button onClick={props.onClose} className="popup__close"  type="button"></button>
       <fieldset className="popup__profile">
         <label className="popup__label">Редактировать профиль</label>
-        <input id="name-input" type="text" className="popup__input popup__input_type_name" name="name" placeholder="Имя" required minLength="2" maxLength="30" value={inputData.name} onChange={handleNameChange}/>
+        <input id="name-input" type="text" className={inputDataValid.name ? 'popup__input popup__input_type_name' : 'popup__input popup__input_type_error' } name="name" placeholder="Имя" required minLength="2" maxLength="30" value={inputData.name} onChange={handleNameChange}/>
 
         <span id="name-input-error" className="popup__error"></span>
         <label></label>
 
-        <input id="job-input" type="text" className="popup__input popup__input_type_description" name="email" placeholder="Почта" required minLength="2" maxLength="30" value={inputData.email} onChange={handleEmailChange}/>
+        <input id="job-input" type="text" className={inputDataValid.email ? 'popup__input popup__input_type_description' : 'popup__input popup__input_type_error'} name="email" placeholder="Почта" required minLength="2" maxLength="30" value={inputData.email} onChange={handleEmailChange}/>
 
         <span id="job-input-error" className="popup__error"></span>
 

@@ -36,7 +36,9 @@ function SavedMovies(props) {
 
       item['id'] = item['_id'];
       item['linkimage'] = item['image'];
-      item['liked'] = true;
+      if (!item.liked) {
+        item['liked'] = true;
+      }
       return item;
   })
 

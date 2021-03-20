@@ -90,7 +90,7 @@ function MoviesCardList(props) {
                 save_text={props.save_text}
                 save={props.save}
                 linkimage={item.linkimage}
-                
+                alreadyLike={props.alreadyLike}
               />
             )}
 

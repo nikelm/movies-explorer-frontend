@@ -4,11 +4,11 @@ import { useHistory } from 'react-router-dom';
 
 function NotFound(props) {
   const history = useHistory();
-
+/*
   function handleButtonGoBack() {
     history.push('/');
   }
-
+*/
   return (
     <>
       <section className="notfound">

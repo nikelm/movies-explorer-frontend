@@ -28,14 +28,15 @@ function Profile(props) {
     setIsOpen(false);
   }
 
+/*
   function openInfo() {
     setIsInfo(true);
   }
+*/
 
   function closeInfo() {
     setIsInfo(false);
   }
-
 
 
   function handleButtonLogout() {

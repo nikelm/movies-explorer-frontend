@@ -15,23 +15,25 @@ function MoviesCard(props) {
       setIsLiked(false);
     }
 
-    setIsLiked(!isLiked);
   }
 
-
+  console.log(props.movie)
 
   function handleDeleteMovie() {
     if (isLiked) {
-      if (props.movie._id) {
-        deleteMovie(props.movie._id);
-        setIsVisiable('movies__container_disable');
-      }
+      auth.getMovies(localStorage.getItem('token'))
+      .then((data) => {
+        data.filter((item) => {
+          if (item.nameEN === props.movie.nameEN) {
+            deleteMovie(item._id);
+          }
+        })
+      })
+      setIsVisiable('movies__container_disable');
       setIsLiked(false);
     } else {
       setIsLiked(true);
     }
-
-
   }
 
 
@@ -67,8 +69,10 @@ function MoviesCard(props) {
           <p className="movies__title">{props.title}</p>
           <p className="movies__duration">{`${props.duration} мин.`}</p>
         </div>
-        <img className="movies__poster" alt="Постер к фильму" src={props.linkimage ? props.linkimage : `https://api.nomoreparties.co${props.thumbnail}`} />
-        <button className={isLiked ? props.save_enable : 'movies__save'} type="button" onClick={isLiked ? handleDeleteMovie  : handleSaveMovie}>
+        <a href={props.movie.trailer ? props.movie.trailer: props.movie.trailerLink} target="_blank" rel="noreferrer">
+          <img className="movies__poster" alt="Постер к фильму" src={props.linkimage ? props.linkimage : `https://api.nomoreparties.co${props.thumbnail}`} />
+        </a>
+        <button className={props.alreadyLike || isLiked ? props.save_enable : 'movies__save'} type="button" onClick={isLiked ? handleDeleteMovie  : handleSaveMovie}>
           {isLiked ? '' : props.save_text}
         </button>
       </div>
