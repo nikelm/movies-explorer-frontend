@@ -85,8 +85,9 @@ function Movies(props) {
 
   React.useEffect(() => {
     JSON.parse(localStorage.getItem('prevSearch'));
-    
-    if (JSON.parse(localStorage.getItem('prevSearch')).length === 0) {
+
+
+    if (JSON.parse(localStorage.getItem('prevSearch')) != null && JSON.parse(localStorage.getItem('prevSearch')).length === 0) {
       setIsFounded(true);
     }
 
