@@ -1,0 +1,66 @@
+.info {
+  width: 430px;
+  height: 330px;
+  background-color: white;
+  box-shadow: 0px 0px 25px
+  rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+
+  z-index: 10;
+
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.5s, opacity 0.5s linear;
+}
+
+.info__button-close {
+  width: 40px;
+  height: 40px;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  background-image: url('../../images/menu__close.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  position: absolute;
+  top:-40px;
+  right: -40px;
+}
+
+.info__block {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info__icon {
+  margin-top: 60px;
+  margin-bottom: 32px;
+  width: 100px;
+  height: 100px;
+}
+
+.info__text {
+  width: 358px;
+  height: 58px;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 29px;
+  margin: 0 auto;
+}
+
+.info_opened {
+  visibility: visible;
+  opacity: 1;
+}

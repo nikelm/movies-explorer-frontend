@@ -11,23 +11,38 @@ function NavTab(props) {
     props.handleCloseMenu();
   }
 
+  function handleButtonSavedMovies() {
+    history.push('/saved-movies');
+    props.handleCloseMenu();
+  }
+
+  function handleButtonMovies() {
+    history.push('/movies');
+    props.handleCloseMenu();
+  }
+
+  function handleButtonRoot() {
+    history.push('/');
+    props.handleCloseMenu();
+  }
+
   return (
     <>
       <section className="navtab">
         <div className={`navtab__rectangle ${props.rectangleClass} `}>
           <div className={`navtab__container ${props.menuClass}`}>
             <div className="navtab__button-container">
-              <button className="navtab__close"  onClick={props.handleCloseMenu}/>
+              <button type="button" className="navtab__close"  onClick={props.handleCloseMenu}/>
             </div>
             <ul className="navtab__list">
               <li className="nav__list-item">
-                <a href="/" className="nav__link">Главная</a>
+                <button type="button" className="nav__link" onClick={handleButtonRoot}>Главная</button>
               </li>
               <li className="nav__list-item nav__list-item_border">
-                <a href="/movies" className="nav__link">Фильмы</a>
+                <button type="button" className="nav__link" onClick={handleButtonMovies}>Фильмы</button>
               </li>
               <li className="nav__list-item">
-                <a href="/saved-movies" className="nav__link">Сохраненные фильмы</a>
+                <button type="button" className="nav__link" onClick={handleButtonSavedMovies}>Сохраненные фильмы</button>
               </li>
             </ul>
             <button className="navtab__profile" onClick={handleButtonProfile}>

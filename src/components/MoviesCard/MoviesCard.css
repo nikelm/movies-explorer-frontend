@@ -5,6 +5,10 @@
   border-radius: 6px;
 }
 
+.movies__container_disable {
+  display: none;
+}
+
 .movies__container-title {
   margin: 0 18px;
   display: flex;
@@ -20,6 +24,7 @@
   width: 100px;
   height: 29px;
   margin-top: 18px;
+  margin-bottom: 18px;
   border-radius: 30px;
   background: #F9F9F9;
   font-family: 'Inter', sans-serif;
@@ -48,21 +53,31 @@
 }
 
 .movies__title {
+  width: 255px;
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 15px;
   line-height: 18px;
   color: #000000;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .movies__duration {
+  width: 60px;
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 13px;
   line-height: 18px;
   color: #A0A0A0;
+}
+
+.movies__poster {
+  width: 360px;
+  height: 200px;
 }
 
 .movies__more {

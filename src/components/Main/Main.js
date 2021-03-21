@@ -1,5 +1,6 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Header from '../Header/Header';
 import Promo from '../Promo/Promo';
 import AboutProject from '../AboutProject/AboutProject';
@@ -13,23 +14,71 @@ import Login from '../Login/Login';
 import Register from '../Register/Register';
 import NotFound from '../NotFound/NotFound';
 import Footer from '../Footer/Footer';
+import * as auth from '../../utils/MainApi';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
+
 
 import './Main.css';
 
 
 function Main(props) {
 
+  const [currentUser, setCurrentUser] = React.useState({});
+
+  const history = useHistory();
+
+  const token = localStorage.getItem('token');
+
+    function getUserData() {
+      const token = localStorage.getItem('token');
+      if (token) {
+        auth.getContent(token).then((res) => {
+          if (res) {
+            setCurrentUser ({
+              'email': res.email,
+              'name': res.name
+            });
+           
+          } else {
+            localStorage.removeItem('token');
+          }
+        })
+      } else {
+        setCurrentUser ({
+          'email': 'no email',
+          'name': 'no name'
+        });
+        history.push('/');
+      }
+    }
+
+
+
+  React.useEffect(() => {
+    getUserData();
+    // eslint-disable-next-line
+  }, [])
+
+
+  const [loggedIn, setLoggedIn] = React.useState(false);
+
+  function handleLogin() {
+    setLoggedIn(true);
+  }
+
   return (
     <>
+    <CurrentUserContext.Provider value={currentUser}>
       <Switch>
         <Route exact path="/">
           <Header
-            header="header header_color"
-            header__navauth="header__nav-auth"
-            header__menu__movies_status="header__menu__movies_disable"
-            header__account_status="header__account_disable"
-            header__menu__navtab_status="header__menu__navtab_disable"
-            header__menu__icon_status="header__menu__icon_disable"
+            header={token ? 'header' : 'header header_color'}
+            header__navauth={token ? '' : 'header__nav-auth'}
+            header__menu__auth_status={token ? 'header__menu__auth_disable': undefined}
+            header__menu__movies_status={token ? undefined : 'header__menu__movies_disable'}
+            header__account_status={token ? undefined : 'header__account_disable'}
+            header__menu__navtab_status={token ? 'header__menu__navtab_disable' : undefined}
+            header__menu__icon_status={token ? undefined : 'header__menu__icon_disable'}
           />
           <Promo />
           <AboutProject />
@@ -38,24 +87,16 @@ function Main(props) {
           <Portfolio />
           <Footer />
         </Route>
-        <Route exact path="/movies">
-          <Header
-            header="header"
-            header__menu__auth_status="header__menu__auth_disable"
-            header__menu__navtab_status="header__menu__navtab_disable"
-          />
-          <Movies />
-          <Footer />
+
+        <Route path="/signin">
+          <Login handleLogin={handleLogin} onChange={getUserData}/>
         </Route>
-        <Route exact path="/saved-movies">
-        <Header
-            header="header"
-            header__menu__auth_status="header__menu__auth_disable"
-            header__menu__navtab_status="header__menu__navtab_disable"
-          />
-          <SavedMovies />
-          <Footer />
-        </Route>
+
+        <ProtectedRoute path="/movies" loggedIn={loggedIn} component={Movies} handleLogin={handleLogin}/>
+
+        <ProtectedRoute path="/saved-movies" loggedIn={loggedIn} component={SavedMovies}/>
+
+
         <Route exact path="/profile">
           <Header
             header="header"
@@ -63,14 +104,13 @@ function Main(props) {
             header__menu__navtab_status="header__menu__navtab_disable"
           />
           <Profile
-            name="Николай"
-            email="user@mail.ru"
+            name={currentUser.name}
+            email={currentUser.email}
+            onChange={getUserData}
           />
           <Footer />
         </Route>
-        <Route exact path="/signin">
-          <Login />
-        </Route>
+
         <Route exact path="/signup">
           <Register />
         </Route>
@@ -78,6 +118,7 @@ function Main(props) {
           <NotFound />
         </Route>
       </Switch>
+      </CurrentUserContext.Provider>
     </>
   );
 }

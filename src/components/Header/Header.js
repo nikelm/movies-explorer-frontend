@@ -25,6 +25,7 @@ function Header(props) {
   }
 
   function handleButtonSavedMovies() {
+    //props.handleLogin();
     history.push('/saved-movies');
   }
 
@@ -47,6 +48,7 @@ function Header(props) {
             handleButtonLogin={handleButtonLogin}
             handleButtonMovies={handleButtonMovies}
             handleButtonSavedMovies={handleButtonSavedMovies}
+            handleLogin={props.handleLogin}
           />
         </div>
 
